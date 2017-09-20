@@ -7,7 +7,10 @@
     <!--此文件负责整个mvc中的配置-->
 
     <!--启用spring的一些annotation -->
-    <context:annotation-config/>
+    <!--<context:annotation-config/>-->
+
+    <!-- 自动扫描装配 -->
+    <context:component-scan base-package="com.oa.controller.web, com.oa.controller.api"/>
 
     <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
     <mvc:annotation-driven>
@@ -18,10 +21,13 @@
     </mvc:annotation-driven>
 
     <!--静态资源映射-->
+    <!-- 访问静态资源 -->
+    <!--<mvc:default-servlet-handler />-->
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
     <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
-    <mvc:resources mapping="/css/**" location="/WEB-INF/static/css/"/>
-    <mvc:resources mapping="/js/**" location="/WEB-INF/static/js/"/>
-    <mvc:resources mapping="/image/**" location="/WEB-INF/static/image/"/>
+    <!--<mvc:resources mapping="/css/**" location="/WEB-INF/static/css/"/>-->
+    <!--<mvc:resources mapping="/js/**" location="/WEB-INF/static/js/"/>-->
+    <!--<mvc:resources mapping="/image/**" location="/WEB-INF/static/image/"/>-->
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
@@ -29,9 +35,8 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/views/"/><!--设置JSP文件的目录位置-->
         <property name="suffix" value=".jsp"/>
-        <property name="exposeContextBeansAsAttributes" value="true"/>
+        <!--<property name="exposeContextBeansAsAttributes" value="true"/>-->
     </bean>
 
-    <!-- 自动扫描装配 -->
-    <context:component-scan base-package="com.oa.controller.web, com.oa.controller.api"/>
+
 </beans>

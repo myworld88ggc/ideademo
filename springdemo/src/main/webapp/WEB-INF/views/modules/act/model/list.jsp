@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/include/taglib.jsp"%>
+<%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,9 +8,9 @@
 <title>模型列表</title>
 <style type="text/css">
 @IMPORT
-	url('<c:url value="/static/bootstrap-3.3.7/css/bootstrap.min.css"/>');
+	url('<c:url value="/static/css/bootstrap.min.css"/>');
 
-@IMPORT url('<c:url value="/static/site/site.css"/>');
+@IMPORT url('<c:url value="/static/css/site.css"/>');
 </style>
 
 </head>
@@ -95,7 +95,7 @@
 							<td><fmt:formatDate value="${model.lastUpdateTime}"
 									pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td><a
-								href="/mcactiviti/act/modeler.html?modelId=${model.id}"
+								href="/act/modeler.html?modelId=${model.id}"
 								target="_blank">编辑</a></td>
 						</tr>						
 					</c:forEach>
@@ -108,7 +108,7 @@
 						aria-hidden="true">&laquo;</span>
 				</a></li>
 				<c:forEach begin="1" end="${pagedata.pageCount }" var="i">
-					<li><a href="/mcactiviti/act/model/list?modeltype=&pageindex=${i}&pagesize=${pagedata.pageSize }">${i}</a></li>
+					<li><a href="/act/model/list?modeltype=&pageindex=${i}&pagesize=${pagedata.pageSize }">${i}</a></li>
 				</c:forEach>
 
 				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
@@ -121,7 +121,7 @@
 
 
 	<script type="text/javascript"
-		src="<c:url value="/static/bootstrap-3.3.7/js/bootstrap.min.js"/>"></script>
+		src="<c:url value="/static/js/bootstrap.min.js"/>"></script>
 
 </body>
 </html>

@@ -9,49 +9,13 @@
     <context-param>
         <description>Spring全局配置</description>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <!--welcome pages-->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
-
-
-
-    <!--<servlet>-->
-        <!--<servlet-name>ModelerServlet</servlet-name>-->
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>classpath:spring-mvc-modeler.xml</param-value>-->
-        <!--</init-param>-->
-        <!--<load-on-startup>1</load-on-startup>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>ModelerServlet</servlet-name>-->
-        <!--&lt;!&ndash; url要与app-cfg.js中配置的一致 &ndash;&gt;-->
-        <!--<url-pattern>/service/*</url-pattern>-->
-    <!--</servlet-mapping>-->
-
-
-
-    <!--&lt;!&ndash;Activiti 路由 配置  &ndash;&gt;-->
-    <!--<servlet>-->
-        <!--<servlet-name>ActivitiServlet</servlet-name>-->
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>classpath:ActivitiServlet.xml</param-value>-->
-        <!--</init-param>-->
-        <!--<load-on-startup>1</load-on-startup>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>ActivitiServlet</servlet-name>-->
-        <!--<url-pattern>/act/*</url-pattern>-->
-    <!--</servlet-mapping>-->
-
 
 
     <!--配置springmvc DispatcherServlet-->
@@ -61,7 +25,7 @@
         <init-param>
             <!--配置dispatcher.xml作为mvc的配置文件-->
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+            <param-value>classpath:dispatcher-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
         <async-supported>true</async-supported>
@@ -71,6 +35,38 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>ModelerServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-mvc-modeler.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModelerServlet</servlet-name>
+        <!-- url要与app-cfg.js中配置的一致 -->
+        <url-pattern>/service/*</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--Activiti 路由 配置  -->
+    <servlet>
+        <servlet-name>ActivitiServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:ActivitiServlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActivitiServlet</servlet-name>
+        <url-pattern>/act/*</url-pattern>
+    </servlet-mapping>
 
 
     <listener>
