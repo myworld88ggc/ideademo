@@ -52,7 +52,7 @@
 			<div class="panel-body">
 				<form class="form-inline">
 					<div class="form-group">
-						<label for="exampleInputName2">模型分类</label> <input type="text"
+						<label for="txtModelType">模型分类</label> <input type="text"
 							class="form-control" id="txtModelType" placeholder="">
 					</div>
 					<button type="submit" class="btn btn-primary">
@@ -95,7 +95,7 @@
 							<td><fmt:formatDate value="${model.lastUpdateTime}"
 									pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td><a
-								href="/act/modeler.html?modelId=${model.id}"
+								href="${pageContext.request.contextPath}/static/act/modeler.html?modelId=${model.id}"
 								target="_blank">编辑</a></td>
 						</tr>						
 					</c:forEach>
@@ -108,7 +108,7 @@
 						aria-hidden="true">&laquo;</span>
 				</a></li>
 				<c:forEach begin="1" end="${pagedata.pageCount }" var="i">
-					<li><a href="/act/model/list?modeltype=&pageindex=${i}&pagesize=${pagedata.pageSize }">${i}</a></li>
+					<li><a href="${pageContext.request.contextPath}/act/model/list?modeltype=&pageindex=${i}&pagesize=${pagedata.pageSize }">${i}</a></li>
 				</c:forEach>
 
 				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>

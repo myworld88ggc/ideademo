@@ -14,7 +14,6 @@
 		type="annotation" expression="org.springframework.stereotype.Controller"/> 
 		</context:component-scan> -->
 
-	<mvc:resources mapping="/act/**" location="/WEB-INF/act/"/>
 
 	<!-- 自动扫描且只扫描@Controller -->
 	<context:component-scan

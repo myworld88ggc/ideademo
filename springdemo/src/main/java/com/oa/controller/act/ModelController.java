@@ -48,7 +48,7 @@ public class ModelController {
 		count=modelQuery.count();
 		
 		//查询数据
-		List<Model> listModeList = modelQuery.listPage(beginIndex, endIndex);
+		List<Model> listModeList = modelQuery.listPage(beginIndex, pagesize);
 		ModelAndView mav = new ModelAndView("model/list");
 		
 		Page<Model> pageData=new Page<Model>(pageindex,pagesize,count,listModeList);
@@ -97,9 +97,6 @@ public class ModelController {
 
 			// 打开模型设计器页面
 			String a = request.getContextPath(); // wfs_web
-			// System.out.println(a);
-			// response.sendRedirect(request.getContextPath() +
-			// "/modeler.html?modelId=" + newModel.getId());
 
 			return "redirect:/static/act/modeler.html?modelId=" + newModel.getId();
 
