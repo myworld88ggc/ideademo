@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
+<%! long datestamp=new Date().getTime();  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>模型列表</title>
 <style type="text/css">
-@IMPORT
-	url('<c:url value="/static/css/bootstrap.min.css"/>');
-
-@IMPORT url('<c:url value="/static/css/site.css"/>');
+	@IMPORT	url('<c:url value="/static/css/bootstrap.min.css"/>?t=<%=datestamp%>');
+	@IMPORT	url('<c:url value="/static/css/bootstrap-table.min.css"/>?t=<%=datestamp%>');
+	@IMPORT url('<c:url value="/static/css/site.css"/>?t=<%=datestamp%>');
 </style>
 
 </head>
@@ -120,8 +121,9 @@
 	</div>
 
 
-	<script type="text/javascript"
-		src="<c:url value="/static/js/bootstrap.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/static/js/bootstrap.min.js"/>?t=<%=datestamp%>"></script>
+	<script type="text/javascript" src="<c:url value="/static/js/bootstrap-table.min.js"/>?t=<%=datestamp%>"></script>
+	<script type="text/javascript" src="<c:url value="/static/js/pageJs/actmodel.js"/>?t=<%=datestamp%>"></script>
 
 </body>
 </html>
