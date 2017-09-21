@@ -33,10 +33,11 @@ public class ModelController {
     @Autowired
     private HttpServletResponse response;
 
-    @RequestMapping(value = "/list", method = POST)
-    public Page<Model> list(@RequestBody @Valid ActModelQueryParam param) {
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public Page<Model> list(@RequestBody ActModelQueryParam param ) {
 
-        String catagory = param.getCategory() == null ? "" : param.getCategory();
+//        ActModelQueryParam param =new ActModelQueryParam();
+        String catagory="";// = param.getCategory() == null ? "" : param.getCategory();
         int pageindex = param.getPageIndex() == 0 ? 1 : param.getPageIndex();
         int pagesize = param.getPageSize() == 0 ? 10 : param.getPageSize();
 

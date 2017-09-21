@@ -24,86 +24,86 @@ import java.util.List;
 @RequestMapping("model")
 public class ModelController {
 
-	protected Logger logger = LoggerFactory.getLogger(getClass());
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Autowired
-	private RepositoryService repositoryService;
-	@Autowired
-	private HttpServletRequest request;
-	@Autowired
-	private HttpServletResponse response;
+    @Autowired
+    private RepositoryService repositoryService;
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired
+    private HttpServletResponse response;
 
-	@RequestMapping("list")
-	public ModelAndView list(@RequestParam(value = "modeltype", required = false, defaultValue = "") String key,
+    @RequestMapping("list")
+    public ModelAndView list(@RequestParam(value = "modeltype", required = false, defaultValue = "") String key,
                              @RequestParam(value = "pageindex", required = false, defaultValue = "1") int pageindex,
                              @RequestParam(value = "pagesize", required = false, defaultValue = "2") int pagesize) {
 
-		//根据pageindex,pagesize计算获取数据的区间
-		int beginIndex=(pageindex-1)*pagesize;
-		int endIndex=pageindex*pagesize;
-		long count=0;
-		
-		//创建Model查询
-		ModelQuery modelQuery=repositoryService.createModelQuery();
-		count=modelQuery.count();
-		
-		//查询数据
-		List<Model> listModeList = modelQuery.listPage(beginIndex, pagesize);
-		ModelAndView mav = new ModelAndView("model/list");
-		
-		Page<Model> pageData=new Page<Model>(pageindex,pagesize,count,listModeList);
-		
-		mav.addObject("pagedata", pageData);
-		mav.addObject("helloworld", "HelloWorld");
-		return mav;
+//		//根据pageindex,pagesize计算获取数据的区间
+//		int beginIndex=(pageindex-1)*pagesize;
+//		int endIndex=pageindex*pagesize;
+//		long count=0;
+//
+//		//创建Model查询
+//		ModelQuery modelQuery=repositoryService.createModelQuery();
+//		count=modelQuery.count();
+//
+//		//查询数据
+//		List<Model> listModeList = modelQuery.listPage(beginIndex, pagesize);
+        ModelAndView mav = new ModelAndView("model/list");
 
-	}
+//		Page<Model> pageData=new Page<Model>(pageindex,pagesize,count,listModeList);
+//
+//		mav.addObject("pagedata", pageData);
+//		mav.addObject("helloworld", "HelloWorld");
+        return mav;
 
-	@RequestMapping("create")
-	public String create(String ajaxParam) {
-		try {
+    }
 
-			// JSONObject ajaxParamObj = JSONObject.parseObject(ajaxParam);
-			// String name = ajaxParamObj.getString("name");
-			// String description = ajaxParamObj.getString("description");
-			// String key = ajaxParamObj.getString("key");
+    @RequestMapping("create")
+    public String create(String ajaxParam) {
+        try {
 
-			String name = "TEST01";
-			String description = "Description";
-			String key = "HelloWorld";
+            // JSONObject ajaxParamObj = JSONObject.parseObject(ajaxParam);
+            // String name = ajaxParamObj.getString("name");
+            // String description = ajaxParamObj.getString("description");
+            // String key = ajaxParamObj.getString("key");
 
-			ObjectMapper objectMapper = new ObjectMapper();
-			ObjectNode modelObjectNode = objectMapper.createObjectNode();
-			modelObjectNode.put(ModelDataJsonConstants.MODEL_NAME, name);
-			modelObjectNode.put(ModelDataJsonConstants.MODEL_REVISION, 1);
-			modelObjectNode.put(ModelDataJsonConstants.MODEL_DESCRIPTION, StringUtils.defaultString(description));
+            String name = "TEST01";
+            String description = "Description";
+            String key = "HelloWorld";
 
-			Model newModel = repositoryService.newModel();
-			newModel.setMetaInfo(modelObjectNode.toString());
-			newModel.setName(name);
-			newModel.setKey(StringUtils.defaultString(key));
-			repositoryService.saveModel(newModel);
+            ObjectMapper objectMapper = new ObjectMapper();
+            ObjectNode modelObjectNode = objectMapper.createObjectNode();
+            modelObjectNode.put(ModelDataJsonConstants.MODEL_NAME, name);
+            modelObjectNode.put(ModelDataJsonConstants.MODEL_REVISION, 1);
+            modelObjectNode.put(ModelDataJsonConstants.MODEL_DESCRIPTION, StringUtils.defaultString(description));
 
-			ObjectNode editorNode = objectMapper.createObjectNode();
-			editorNode.put("id", "canvas");
-			editorNode.put("resourceId", "canvas");
+            Model newModel = repositoryService.newModel();
+            newModel.setMetaInfo(modelObjectNode.toString());
+            newModel.setName(name);
+            newModel.setKey(StringUtils.defaultString(key));
+            repositoryService.saveModel(newModel);
 
-			ObjectNode stencilSetNode = objectMapper.createObjectNode();
-			stencilSetNode.put("namespace", "http://b3mn.org/stencilset/bpmn2.0#");
-			editorNode.put("stencilset", stencilSetNode);
+            ObjectNode editorNode = objectMapper.createObjectNode();
+            editorNode.put("id", "canvas");
+            editorNode.put("resourceId", "canvas");
 
-			// 为模型绑定参数
-			repositoryService.addModelEditorSource(newModel.getId(), editorNode.toString().getBytes("utf-8"));
+            ObjectNode stencilSetNode = objectMapper.createObjectNode();
+            stencilSetNode.put("namespace", "http://b3mn.org/stencilset/bpmn2.0#");
+            editorNode.put("stencilset", stencilSetNode);
 
-			// 打开模型设计器页面
-			String a = request.getContextPath(); // wfs_web
+            // 为模型绑定参数
+            repositoryService.addModelEditorSource(newModel.getId(), editorNode.toString().getBytes("utf-8"));
 
-			return "redirect:/static/act/modeler.html?modelId=" + newModel.getId();
+            // 打开模型设计器页面
+            String a = request.getContextPath(); // wfs_web
 
-		} catch (Exception e) {
-			logger.error("创建模型失败：", e);
-			return null;
-		}
-	}
+            return "redirect:/static/act/modeler.html?modelId=" + newModel.getId();
+
+        } catch (Exception e) {
+            logger.error("创建模型失败：", e);
+            return null;
+        }
+    }
 
 }
