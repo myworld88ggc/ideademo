@@ -101,7 +101,7 @@ public class ModelController {
 			// response.sendRedirect(request.getContextPath() +
 			// "/modeler.html?modelId=" + newModel.getId());
 
-			return "redirect:/act/modeler.html?modelId=" + newModel.getId();
+			return "redirect:/static/act/modeler.html?modelId=" + newModel.getId();
 
 		} catch (Exception e) {
 			logger.error("创建模型失败：", e);

@@ -19,8 +19,7 @@
 
     <!-- 访问静态资源 -->
     <!--<mvc:default-servlet-handler />-->
-    <mvc:resources mapping="/act/**" location="/WEB-INF/act/"/>
-    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+       <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
     <!-- 视图解析器 -->
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
