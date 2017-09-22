@@ -1,6 +1,6 @@
 package com.oa.controller.api;
 
-import com.oa.pojo.ApiReturnMessage;
+import com.oa.pojo.MessageResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +13,7 @@ public class ApiController {
 
     @RequestMapping("index")
     public  Object index(){
-        return new ApiReturnMessage(200, "success", "Test");
+        return new MessageResult(200, "success", "Test");
     }
 
 }

@@ -8,17 +8,17 @@ import  javax.validation.constraints.*;
 public class ActModelQueryParam {
 
 
-//    private String category;
+    private String category;
     private int pageIndex;
     private int pageSize;
 
-//    public String getCategory() {
-//        return category;
-//    }
-//
-//    public void setCategory(String category) {
-//        this.category = category;
-//    }
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public int getPageIndex() {
         return pageIndex;

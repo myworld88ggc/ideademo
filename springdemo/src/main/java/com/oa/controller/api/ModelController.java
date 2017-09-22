@@ -3,9 +3,11 @@ package com.oa.controller.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.oa.pojo.ActModelQueryParam;
+import com.oa.pojo.MessageResult;
 import com.oa.pojo.Page;
 import org.activiti.editor.constants.ModelDataJsonConstants;
 import org.activiti.engine.RepositoryService;
+import org.activiti.engine.impl.util.json.JSONObject;
 import org.activiti.engine.repository.Model;
 import org.activiti.engine.repository.ModelQuery;
 import org.apache.commons.lang3.StringUtils;
@@ -13,10 +15,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -34,10 +38,13 @@ public class ModelController {
     private HttpServletResponse response;
 
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public Page<Model> list(@RequestBody ActModelQueryParam param ) {
+    public MessageResult list(@RequestBody ActModelQueryParam param) {
+        MessageResult result = new MessageResult();
+        result.setCode(200);
+        result.setMsg("Success");
 
 //        ActModelQueryParam param =new ActModelQueryParam();
-        String catagory="";// = param.getCategory() == null ? "" : param.getCategory();
+        String catagory = param.getCategory() == null ? "" : param.getCategory();
         int pageindex = param.getPageIndex() == 0 ? 1 : param.getPageIndex();
         int pagesize = param.getPageSize() == 0 ? 10 : param.getPageSize();
 
@@ -61,51 +68,50 @@ public class ModelController {
         List<Model> listModeList = modelQuery.listPage(beginIndex, pagesize);
         Page<Model> pageData = new Page<Model>(pageindex, pagesize, count, listModeList);
 
-        return pageData;
+        result.setData(pageData);
+        return result;
 
     }
 
-    @RequestMapping("create")
-    public Object create(String ajaxParam) {
-        try {
+    @RequestMapping(value="/create", method = RequestMethod.POST)
+
+//    public Object create( @RequestParam Map<String, Object> paramMap) {
+        public Object create(@ResponseBody JSONObject jsonObject) {
+
+        MessageResult result = new MessageResult();
 
 
-            String name = "TEST01";
-            String description = "Description";
-            String key = "HelloWorld";
+        String name = "TEST01";
+        String description = "Description";
+        String key = "HelloWorld";
 
-            ObjectMapper objectMapper = new ObjectMapper();
-            ObjectNode modelObjectNode = objectMapper.createObjectNode();
-            modelObjectNode.put(ModelDataJsonConstants.MODEL_NAME, name);
-            modelObjectNode.put(ModelDataJsonConstants.MODEL_REVISION, 1);
-            modelObjectNode.put(ModelDataJsonConstants.MODEL_DESCRIPTION, StringUtils.defaultString(description));
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            ObjectNode modelObjectNode = objectMapper.createObjectNode();
+//            modelObjectNode.put(ModelDataJsonConstants.MODEL_NAME, name);
+//            modelObjectNode.put(ModelDataJsonConstants.MODEL_REVISION, 1);
+//            modelObjectNode.put(ModelDataJsonConstants.MODEL_DESCRIPTION, StringUtils.defaultString(description));
+//
+//            Model newModel = repositoryService.newModel();
+//            newModel.setMetaInfo(modelObjectNode.toString());
+//            newModel.setName(name);
+//            newModel.setKey(StringUtils.defaultString(key));
+//            repositoryService.saveModel(newModel);
+//
+//            ObjectNode editorNode = objectMapper.createObjectNode();
+//            editorNode.put("id", "canvas");
+//            editorNode.put("resourceId", "canvas");
+//
+//            ObjectNode stencilSetNode = objectMapper.createObjectNode();
+//            stencilSetNode.put("namespace", "http://b3mn.org/stencilset/bpmn2.0#");
+//
+//            editorNode.put("stencilset", stencilSetNode);
+//
+//            // 为模型绑定参数
+//            repositoryService.addModelEditorSource(newModel.getId(), editorNode.toString().getBytes("utf-8"));
 
-            Model newModel = repositoryService.newModel();
-            newModel.setMetaInfo(modelObjectNode.toString());
-            newModel.setName(name);
-            newModel.setKey(StringUtils.defaultString(key));
-            repositoryService.saveModel(newModel);
+        return result;
 
-            ObjectNode editorNode = objectMapper.createObjectNode();
-            editorNode.put("id", "canvas");
-            editorNode.put("resourceId", "canvas");
 
-            ObjectNode stencilSetNode = objectMapper.createObjectNode();
-            stencilSetNode.put("namespace", "http://b3mn.org/stencilset/bpmn2.0#");
-            editorNode.put("stencilset", stencilSetNode);
-
-            // 为模型绑定参数
-            repositoryService.addModelEditorSource(newModel.getId(), editorNode.toString().getBytes("utf-8"));
-
-            // 打开模型设计器页面
-            String a = request.getContextPath(); // wfs_web
-
-            return "redirect:/static/act/modeler.html?modelId=" + newModel.getId();
-
-        } catch (Exception e) {
-            logger.error("创建模型失败：", e);
-            return null;
-        }
     }
 
 }

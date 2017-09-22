@@ -6,12 +6,15 @@ import org.springframework.context.annotation.Bean;
  * Created by Will on 2017/9/20.
  */
 
-public class ApiReturnMessage {
+public class MessageResult {
     private int code;
     private String msg;
     private Object data;
 
-    public ApiReturnMessage(int code, String msg, Object data) {
+    public MessageResult() {
+    }
+
+    public MessageResult(int code, String msg, Object data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
