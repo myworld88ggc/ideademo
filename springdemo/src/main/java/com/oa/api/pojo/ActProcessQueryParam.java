@@ -1,11 +1,10 @@
-package com.oa.pojo;
-import  javax.validation.constraints.*;
+package com.oa.api.pojo;
 
 /**
  * Created by gao.guangcai on 2017-09-21.
  */
 
-public class ActModelQueryParam {
+public class ActProcessQueryParam {
 
 
     private String category;

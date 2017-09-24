@@ -1,6 +1,4 @@
-package com.oa.pojo;
-
-import org.springframework.context.annotation.Bean;
+package com.oa.api.pojo;
 
 /**
  * Created by Will on 2017/9/20.

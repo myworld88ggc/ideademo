@@ -10,7 +10,7 @@
     <!--<context:annotation-config/>-->
 
     <!-- 自动扫描装配 -->
-    <context:component-scan base-package="com.oa.controller.web, com.oa.controller.api"/>
+    <context:component-scan base-package="com.oa.web"/>
 
     <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
     <mvc:annotation-driven>

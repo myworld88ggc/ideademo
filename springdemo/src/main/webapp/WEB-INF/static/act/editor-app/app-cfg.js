@@ -21,5 +21,5 @@
 var ACTIVITI = ACTIVITI || {};
 
 ACTIVITI.CONFIG = {
-	'contextRoot' : '/springdemo/service',
+	'contextRoot' : '/springdemo/api/act/model/service',
 };

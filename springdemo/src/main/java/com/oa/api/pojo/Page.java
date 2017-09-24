@@ -1,4 +1,4 @@
-package com.oa.pojo;
+package com.oa.api.pojo;
 
 /**
  * Created by Will on 2017/9/20.
@@ -14,16 +14,18 @@ public class Page<T> {
     private int pageCount;// 总页数
     private List<T> list = new ArrayList<T>();
 
-    public Page(int pageIndex, int pageSize, long count2, List<T> list) {
+    public Page(int pageIndex, int pageSize, long count2) {
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
         this.count = count2;
-        this.list = list;
 
         // 计算总页数
         this.pageCount =(int)( (count2 % pageSize) == 0 ? count2 / pageSize : (count2 / pageSize) + 1);
     }
-
+    public Page(int pageIndex, int pageSize, long count2, List<T> list) {
+        this(pageIndex, pageSize, count2);
+        this.list = list;
+    }
     public int getPageIndex() {
         return pageIndex;
     }
