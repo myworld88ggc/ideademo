@@ -1,5 +1,6 @@
 package com.oa.api.controller;
 
+import com.oa.api.pojo.ActProcessModel;
 import com.oa.api.pojo.ActProcessQueryParam;
 import com.oa.api.pojo.MessageResult;
 import com.oa.api.pojo.Page;
@@ -50,13 +51,20 @@ public class ProcessController {
         count = processDefinitionQuery.count();
         //查询数据S
         List<ProcessDefinition> listProcessDefinition = processDefinitionQuery.listPage(beginIndex, pagesize);
-        Page< Object[]> pageData = new Page< Object[]>(pageindex, pagesize, count);
+        Page<ActProcessModel> pageData = new Page<ActProcessModel>(pageindex, pagesize, count);
 
 
         for (ProcessDefinition processDefinition : listProcessDefinition) {
             String deploymentId = processDefinition.getDeploymentId();
             Deployment deployment = repositoryService.createDeploymentQuery().deploymentId(deploymentId).singleResult();
-            pageData.getList().add(new Object[]{processDefinition,deployment});
+            ActProcessModel model=new ActProcessModel();
+            model.setId(processDefinition.getId());
+            model.setKey(processDefinition.getKey());
+            model.setName(processDefinition.getName());
+            model.setVersion(processDefinition.getVersion());
+            model.setDeploymentTime(deployment.getDeploymentTime());
+            model.setSuspended(processDefinition.isSuspended());
+            pageData.getList().add(model);
         }
 
         result.setData(pageData);

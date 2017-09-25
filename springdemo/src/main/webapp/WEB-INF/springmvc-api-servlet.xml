@@ -17,6 +17,27 @@
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            <!--<bean-->
+                    <!--class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">-->
+                <!--<property name="supportedMediaTypes">-->
+                    <!--<list>-->
+                        <!--&lt;!&ndash; 避免IE返回时出现下载提示！ &ndash;&gt;-->
+                        <!--<value>text/html;charset=UTF-8</value>-->
+                        <!--<value>application/json;charset=UTF-8</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+                <!--<property name="features">-->
+                    <!--<array value-type="com.alibaba.fastjson.serializer.SerializerFeature">-->
+                        <!--<value>DisableCircularReferenceDetect</value>-->
+                    <!--</array>-->
+                <!--</property>-->
+
+            <!--</bean>-->
+            <!--<bean id="DisableCircularReferenceDetect"-->
+                  <!--class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">-->
+                <!--<property name="staticField"-->
+                          <!--value="com.alibaba.fastjson.serializer.SerializerFeature.DisableCircularReferenceDetect"></property>-->
+            <!--</bean>-->
         </mvc:message-converters>
     </mvc:annotation-driven>
 
@@ -32,10 +53,10 @@
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
     <!--<bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
-        <!--<property name="prefix" value="/WEB-INF/views/"/>&lt;!&ndash;设置JSP文件的目录位置&ndash;&gt;-->
-        <!--<property name="suffix" value=".jsp"/>-->
-        <!--<property name="exposeContextBeansAsAttributes" value="true"/>-->
+    <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
+    <!--<property name="prefix" value="/WEB-INF/views/"/>&lt;!&ndash;设置JSP文件的目录位置&ndash;&gt;-->
+    <!--<property name="suffix" value=".jsp"/>-->
+    <!--<property name="exposeContextBeansAsAttributes" value="true"/>-->
     <!--</bean>-->
 
 
