@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+<!-- 
+    <property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
+    <property name="jdbcDriver" value="org.h2.Driver" />
+    <property name="jdbcUsername" value="sa" />
+    <property name="jdbcPassword" value="" /> -->
+
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/activiti?useSSL=false" />
+    <property name="jdbcDriver" value="com.mysql.jdbc.Driver" />
+    <property name="jdbcUsername" value="root" />
+    <property name="jdbcPassword" value="accp" />
+
+
+      <!--false (默认): 当引擎启动时，检查数据库表结构的版本是否匹配库文件版本。版本不匹配时抛出异常。-->
+      <!--true : 构建引擎时，检查并在需要时更新表结构。表结构不存在则会创建。-->
+      <!--create‐drop : 引擎创建时创建表结构，并在引擎关闭时删除表结构-->
+    <property name="databaseSchemaUpdate" value="true" />
+
+    <property name="jobExecutorActivate" value="false" />
+    <property name="asyncExecutorEnabled" value="true" />
+    <property name="asyncExecutorActivate" value="false" />
+
+    <property name="mailServerHost" value="mail.my-corp.com" />
+    <property name="mailServerPort" value="5025" />
+  </bean>
+
+</beans>

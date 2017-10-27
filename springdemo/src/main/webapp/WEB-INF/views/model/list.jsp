@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  media="screen"/>
     <title>模型列表</title>
     <%@ include file="/WEB-INF/views/share/_header.jsp" %>
 </head>
