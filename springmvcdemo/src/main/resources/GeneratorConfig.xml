@@ -32,7 +32,7 @@
 
 
         <!--生成POJO类-->
-        <javaModelGenerator targetPackage="com.will.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.will.pojo" targetProject="src/main/generator">
             <!-- 是否对model添加 构造函数 -->
             <property name="constructorBased" value="true"/>
             <!-- 是否允许子包 -->
@@ -45,13 +45,13 @@
 
 
         <!--Mapper映射文件的生成配置,指定包位置和实际位置-->
-        <sqlMapGenerator targetPackage="com.will.mapper" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.will.mapper" targetProject="src/main/generator">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
 
         <!--Mapper接口生成的配置,指定包位置和实际位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.will.dao" targetProject="src/main/java" >
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.will.dao" targetProject="src/main/generator" >
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
