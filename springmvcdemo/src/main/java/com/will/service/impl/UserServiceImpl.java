@@ -11,7 +11,7 @@ import javax.annotation.Resource;
  * Created by gao.guangcai on 2017-10-27.
  */
 @Service("userService")
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
 
     @Resource
     private UserMapper userDao;

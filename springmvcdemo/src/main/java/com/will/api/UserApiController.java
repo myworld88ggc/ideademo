@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/user/")
-public class UserController {
+public class UserApiController {
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index() {
         return "index";
