@@ -7,4 +7,6 @@ import com.will.pojo.User;
  */
 public interface IUserService {
     public User getUserById(int userId);
+
+    public int insert(User  user);
 }

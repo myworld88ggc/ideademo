@@ -20,4 +20,8 @@ public class UserServiceImpl implements IUserService {
         return this.userDao.selectByPrimaryKey(userId);
     }
 
+    public int insert(User  user){
+        return this.userDao.insert(user);
+    }
+
 }

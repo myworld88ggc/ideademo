@@ -22,13 +22,11 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.will.pojo.User">
-    insert into user (id, user_name, password, 
-      age)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.will.pojo.User" useGeneratedKeys="true" keyProperty="id">
+    insert into user ( user_name, password,  age)
+    values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.will.pojo.User">
+  <insert id="insertSelective" parameterType="com.will.pojo.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
