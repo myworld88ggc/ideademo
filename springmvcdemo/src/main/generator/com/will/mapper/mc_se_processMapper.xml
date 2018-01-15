@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_se_processMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_se_process">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="SystemName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SysCode" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="ProcessName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcessCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcessType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ProcessOrder" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Details" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APICallBackHost" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APICallBackPath" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PlatformType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RegTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="RegStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ContactUserName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ContactUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CurrentValidVersion" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, SystemName, SysCode, ProcessName, ProcessCode, ProcessType, ProcessOrder, Summary, 
+    Details, APICallBackHost, APICallBackPath, PlatformType, RegTime, RegStatus, ContactUserName, 
+    ContactUserId, CurrentValidVersion, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_se_process
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mc_se_process
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_se_process">
+    insert into mc_se_process (Id, SystemName, SysCode, 
+      ProcessName, ProcessCode, ProcessType, 
+      ProcessOrder, Summary, Details, 
+      APICallBackHost, APICallBackPath, PlatformType, 
+      RegTime, RegStatus, ContactUserName, 
+      ContactUserId, CurrentValidVersion, RecordStatus, 
+      CreateTime, LastModifyTime)
+    values (#{id,jdbcType=INTEGER}, #{systemname,jdbcType=VARCHAR}, #{syscode,jdbcType=CHAR}, 
+      #{processname,jdbcType=VARCHAR}, #{processcode,jdbcType=VARCHAR}, #{processtype,jdbcType=INTEGER}, 
+      #{processorder,jdbcType=INTEGER}, #{summary,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}, 
+      #{apicallbackhost,jdbcType=VARCHAR}, #{apicallbackpath,jdbcType=VARCHAR}, #{platformtype,jdbcType=INTEGER}, 
+      #{regtime,jdbcType=TIMESTAMP}, #{regstatus,jdbcType=INTEGER}, #{contactusername,jdbcType=VARCHAR}, 
+      #{contactuserid,jdbcType=VARCHAR}, #{currentvalidversion,jdbcType=VARCHAR}, #{recordstatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_se_process">
+    insert into mc_se_process
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="systemname != null">
+        SystemName,
+      </if>
+      <if test="syscode != null">
+        SysCode,
+      </if>
+      <if test="processname != null">
+        ProcessName,
+      </if>
+      <if test="processcode != null">
+        ProcessCode,
+      </if>
+      <if test="processtype != null">
+        ProcessType,
+      </if>
+      <if test="processorder != null">
+        ProcessOrder,
+      </if>
+      <if test="summary != null">
+        Summary,
+      </if>
+      <if test="details != null">
+        Details,
+      </if>
+      <if test="apicallbackhost != null">
+        APICallBackHost,
+      </if>
+      <if test="apicallbackpath != null">
+        APICallBackPath,
+      </if>
+      <if test="platformtype != null">
+        PlatformType,
+      </if>
+      <if test="regtime != null">
+        RegTime,
+      </if>
+      <if test="regstatus != null">
+        RegStatus,
+      </if>
+      <if test="contactusername != null">
+        ContactUserName,
+      </if>
+      <if test="contactuserid != null">
+        ContactUserId,
+      </if>
+      <if test="currentvalidversion != null">
+        CurrentValidVersion,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="systemname != null">
+        #{systemname,jdbcType=VARCHAR},
+      </if>
+      <if test="syscode != null">
+        #{syscode,jdbcType=CHAR},
+      </if>
+      <if test="processname != null">
+        #{processname,jdbcType=VARCHAR},
+      </if>
+      <if test="processcode != null">
+        #{processcode,jdbcType=VARCHAR},
+      </if>
+      <if test="processtype != null">
+        #{processtype,jdbcType=INTEGER},
+      </if>
+      <if test="processorder != null">
+        #{processorder,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="apicallbackhost != null">
+        #{apicallbackhost,jdbcType=VARCHAR},
+      </if>
+      <if test="apicallbackpath != null">
+        #{apicallbackpath,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null">
+        #{platformtype,jdbcType=INTEGER},
+      </if>
+      <if test="regtime != null">
+        #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regstatus != null">
+        #{regstatus,jdbcType=INTEGER},
+      </if>
+      <if test="contactusername != null">
+        #{contactusername,jdbcType=VARCHAR},
+      </if>
+      <if test="contactuserid != null">
+        #{contactuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentvalidversion != null">
+        #{currentvalidversion,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_se_process">
+    update mc_se_process
+    <set>
+      <if test="systemname != null">
+        SystemName = #{systemname,jdbcType=VARCHAR},
+      </if>
+      <if test="syscode != null">
+        SysCode = #{syscode,jdbcType=CHAR},
+      </if>
+      <if test="processname != null">
+        ProcessName = #{processname,jdbcType=VARCHAR},
+      </if>
+      <if test="processcode != null">
+        ProcessCode = #{processcode,jdbcType=VARCHAR},
+      </if>
+      <if test="processtype != null">
+        ProcessType = #{processtype,jdbcType=INTEGER},
+      </if>
+      <if test="processorder != null">
+        ProcessOrder = #{processorder,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null">
+        Summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        Details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="apicallbackhost != null">
+        APICallBackHost = #{apicallbackhost,jdbcType=VARCHAR},
+      </if>
+      <if test="apicallbackpath != null">
+        APICallBackPath = #{apicallbackpath,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null">
+        PlatformType = #{platformtype,jdbcType=INTEGER},
+      </if>
+      <if test="regtime != null">
+        RegTime = #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regstatus != null">
+        RegStatus = #{regstatus,jdbcType=INTEGER},
+      </if>
+      <if test="contactusername != null">
+        ContactUserName = #{contactusername,jdbcType=VARCHAR},
+      </if>
+      <if test="contactuserid != null">
+        ContactUserId = #{contactuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentvalidversion != null">
+        CurrentValidVersion = #{currentvalidversion,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_se_process">
+    update mc_se_process
+    set SystemName = #{systemname,jdbcType=VARCHAR},
+      SysCode = #{syscode,jdbcType=CHAR},
+      ProcessName = #{processname,jdbcType=VARCHAR},
+      ProcessCode = #{processcode,jdbcType=VARCHAR},
+      ProcessType = #{processtype,jdbcType=INTEGER},
+      ProcessOrder = #{processorder,jdbcType=INTEGER},
+      Summary = #{summary,jdbcType=VARCHAR},
+      Details = #{details,jdbcType=VARCHAR},
+      APICallBackHost = #{apicallbackhost,jdbcType=VARCHAR},
+      APICallBackPath = #{apicallbackpath,jdbcType=VARCHAR},
+      PlatformType = #{platformtype,jdbcType=INTEGER},
+      RegTime = #{regtime,jdbcType=TIMESTAMP},
+      RegStatus = #{regstatus,jdbcType=INTEGER},
+      ContactUserName = #{contactusername,jdbcType=VARCHAR},
+      ContactUserId = #{contactuserid,jdbcType=VARCHAR},
+      CurrentValidVersion = #{currentvalidversion,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

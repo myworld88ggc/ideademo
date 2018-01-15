@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_proc_roleMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_proc_role">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RoleName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RoleCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RoleType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, RoleName, RoleCode, Remark, RoleType, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_proc_role
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_proc_role
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_proc_role">
+    insert into mc_proc_role (Id, RoleName, RoleCode, 
+      Remark, RoleType, RecordStatus, 
+      CreateTime, LastModifyTime)
+    values (#{id,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{rolecode,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{roletype,jdbcType=INTEGER}, #{recordstatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_proc_role">
+    insert into mc_proc_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="rolename != null">
+        RoleName,
+      </if>
+      <if test="rolecode != null">
+        RoleCode,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="roletype != null">
+        RoleType,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null">
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="rolecode != null">
+        #{rolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="roletype != null">
+        #{roletype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_proc_role">
+    update mc_proc_role
+    <set>
+      <if test="rolename != null">
+        RoleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="rolecode != null">
+        RoleCode = #{rolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="roletype != null">
+        RoleType = #{roletype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_proc_role">
+    update mc_proc_role
+    set RoleName = #{rolename,jdbcType=VARCHAR},
+      RoleCode = #{rolecode,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      RoleType = #{roletype,jdbcType=INTEGER},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_com_employeeMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_com_employee">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="EMPLOYEE_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GENDER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BIRTHDAY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ETHNIC_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPARTMENT_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_SHORT_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPARTMENT_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FIRST_WORK_DATE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="JOIN_DATE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="POSITION_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="POSITION_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EDUCATION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EMAIL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="APPOINT_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EMPLOYEE_RCD" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="SUPERVISOR_ID_PATH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SUPERVISOR_NAME_PATH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="JOB_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COST_CENTER_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COST_CENTER_TYPE_DESC" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_COST_CENTER_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_COST_CENTER_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LEADER_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MANAGER_LVL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="JOB_CODE_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAST_MODIFY_DATE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EMPLOYEE_STATUS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EFFDT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOCATION_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOCATION_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ID_CARD" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MOBILE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, EMPLOYEE_ID, NAME, GENDER, BIRTHDAY, ETHNIC_TYPE, DEPARTMENT_NAME, DEPT_SHORT_NAME, 
+    DEPARTMENT_CODE, FIRST_WORK_DATE, JOIN_DATE, POSITION_NAME, POSITION_CODE, EDUCATION, 
+    EMAIL, APPOINT_NAME, EMPLOYEE_RCD, SUPERVISOR_ID_PATH, SUPERVISOR_NAME_PATH, JOB_CODE, 
+    COST_CENTER_CODE, COST_CENTER_TYPE_DESC, COMPANY_CODE, COMPANY_COST_CENTER_NAME, 
+    COMPANY_COST_CENTER_CODE, LEADER_ID, MANAGER_LVL, JOB_CODE_NAME, LAST_MODIFY_DATE, 
+    EMPLOYEE_STATUS, EFFDT, LOCATION_NAME, LOCATION_CODE, ID_CARD, MOBILE, RecordStatus, 
+    CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_com_employee
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mc_com_employee
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_com_employee">
+    insert into mc_com_employee (Id, EMPLOYEE_ID, NAME, 
+      GENDER, BIRTHDAY, ETHNIC_TYPE, 
+      DEPARTMENT_NAME, DEPT_SHORT_NAME, DEPARTMENT_CODE, 
+      FIRST_WORK_DATE, JOIN_DATE, POSITION_NAME, 
+      POSITION_CODE, EDUCATION, EMAIL, 
+      APPOINT_NAME, EMPLOYEE_RCD, SUPERVISOR_ID_PATH, 
+      SUPERVISOR_NAME_PATH, JOB_CODE, COST_CENTER_CODE, 
+      COST_CENTER_TYPE_DESC, COMPANY_CODE, COMPANY_COST_CENTER_NAME, 
+      COMPANY_COST_CENTER_CODE, LEADER_ID, MANAGER_LVL, 
+      JOB_CODE_NAME, LAST_MODIFY_DATE, EMPLOYEE_STATUS, 
+      EFFDT, LOCATION_NAME, LOCATION_CODE, 
+      ID_CARD, MOBILE, RecordStatus, 
+      CreateTime, LastModifyTime)
+    values (#{id,jdbcType=BIGINT}, #{employeeId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{ethnicType,jdbcType=VARCHAR}, 
+      #{departmentName,jdbcType=VARCHAR}, #{deptShortName,jdbcType=VARCHAR}, #{departmentCode,jdbcType=VARCHAR}, 
+      #{firstWorkDate,jdbcType=VARCHAR}, #{joinDate,jdbcType=VARCHAR}, #{positionName,jdbcType=VARCHAR}, 
+      #{positionCode,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{appointName,jdbcType=VARCHAR}, #{employeeRcd,jdbcType=INTEGER}, #{supervisorIdPath,jdbcType=VARCHAR}, 
+      #{supervisorNamePath,jdbcType=VARCHAR}, #{jobCode,jdbcType=VARCHAR}, #{costCenterCode,jdbcType=VARCHAR}, 
+      #{costCenterTypeDesc,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, #{companyCostCenterName,jdbcType=VARCHAR}, 
+      #{companyCostCenterCode,jdbcType=VARCHAR}, #{leaderId,jdbcType=VARCHAR}, #{managerLvl,jdbcType=VARCHAR}, 
+      #{jobCodeName,jdbcType=VARCHAR}, #{lastModifyDate,jdbcType=VARCHAR}, #{employeeStatus,jdbcType=VARCHAR}, 
+      #{effdt,jdbcType=VARCHAR}, #{locationName,jdbcType=VARCHAR}, #{locationCode,jdbcType=VARCHAR}, 
+      #{idCard,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{recordstatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_com_employee">
+    insert into mc_com_employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="gender != null">
+        GENDER,
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY,
+      </if>
+      <if test="ethnicType != null">
+        ETHNIC_TYPE,
+      </if>
+      <if test="departmentName != null">
+        DEPARTMENT_NAME,
+      </if>
+      <if test="deptShortName != null">
+        DEPT_SHORT_NAME,
+      </if>
+      <if test="departmentCode != null">
+        DEPARTMENT_CODE,
+      </if>
+      <if test="firstWorkDate != null">
+        FIRST_WORK_DATE,
+      </if>
+      <if test="joinDate != null">
+        JOIN_DATE,
+      </if>
+      <if test="positionName != null">
+        POSITION_NAME,
+      </if>
+      <if test="positionCode != null">
+        POSITION_CODE,
+      </if>
+      <if test="education != null">
+        EDUCATION,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="appointName != null">
+        APPOINT_NAME,
+      </if>
+      <if test="employeeRcd != null">
+        EMPLOYEE_RCD,
+      </if>
+      <if test="supervisorIdPath != null">
+        SUPERVISOR_ID_PATH,
+      </if>
+      <if test="supervisorNamePath != null">
+        SUPERVISOR_NAME_PATH,
+      </if>
+      <if test="jobCode != null">
+        JOB_CODE,
+      </if>
+      <if test="costCenterCode != null">
+        COST_CENTER_CODE,
+      </if>
+      <if test="costCenterTypeDesc != null">
+        COST_CENTER_TYPE_DESC,
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE,
+      </if>
+      <if test="companyCostCenterName != null">
+        COMPANY_COST_CENTER_NAME,
+      </if>
+      <if test="companyCostCenterCode != null">
+        COMPANY_COST_CENTER_CODE,
+      </if>
+      <if test="leaderId != null">
+        LEADER_ID,
+      </if>
+      <if test="managerLvl != null">
+        MANAGER_LVL,
+      </if>
+      <if test="jobCodeName != null">
+        JOB_CODE_NAME,
+      </if>
+      <if test="lastModifyDate != null">
+        LAST_MODIFY_DATE,
+      </if>
+      <if test="employeeStatus != null">
+        EMPLOYEE_STATUS,
+      </if>
+      <if test="effdt != null">
+        EFFDT,
+      </if>
+      <if test="locationName != null">
+        LOCATION_NAME,
+      </if>
+      <if test="locationCode != null">
+        LOCATION_CODE,
+      </if>
+      <if test="idCard != null">
+        ID_CARD,
+      </if>
+      <if test="mobile != null">
+        MOBILE,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="ethnicType != null">
+        #{ethnicType,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptShortName != null">
+        #{deptShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentCode != null">
+        #{departmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="firstWorkDate != null">
+        #{firstWorkDate,jdbcType=VARCHAR},
+      </if>
+      <if test="joinDate != null">
+        #{joinDate,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionCode != null">
+        #{positionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="appointName != null">
+        #{appointName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeRcd != null">
+        #{employeeRcd,jdbcType=INTEGER},
+      </if>
+      <if test="supervisorIdPath != null">
+        #{supervisorIdPath,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorNamePath != null">
+        #{supervisorNamePath,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode != null">
+        #{jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="costCenterCode != null">
+        #{costCenterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="costCenterTypeDesc != null">
+        #{costCenterTypeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCostCenterName != null">
+        #{companyCostCenterName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCostCenterCode != null">
+        #{companyCostCenterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="managerLvl != null">
+        #{managerLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCodeName != null">
+        #{jobCodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null">
+        #{lastModifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStatus != null">
+        #{employeeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="effdt != null">
+        #{effdt,jdbcType=VARCHAR},
+      </if>
+      <if test="locationName != null">
+        #{locationName,jdbcType=VARCHAR},
+      </if>
+      <if test="locationCode != null">
+        #{locationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_com_employee">
+    update mc_com_employee
+    <set>
+      <if test="employeeId != null">
+        EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        GENDER = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="ethnicType != null">
+        ETHNIC_TYPE = #{ethnicType,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        DEPARTMENT_NAME = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptShortName != null">
+        DEPT_SHORT_NAME = #{deptShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentCode != null">
+        DEPARTMENT_CODE = #{departmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="firstWorkDate != null">
+        FIRST_WORK_DATE = #{firstWorkDate,jdbcType=VARCHAR},
+      </if>
+      <if test="joinDate != null">
+        JOIN_DATE = #{joinDate,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionCode != null">
+        POSITION_CODE = #{positionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        EDUCATION = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="appointName != null">
+        APPOINT_NAME = #{appointName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeRcd != null">
+        EMPLOYEE_RCD = #{employeeRcd,jdbcType=INTEGER},
+      </if>
+      <if test="supervisorIdPath != null">
+        SUPERVISOR_ID_PATH = #{supervisorIdPath,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorNamePath != null">
+        SUPERVISOR_NAME_PATH = #{supervisorNamePath,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCode != null">
+        JOB_CODE = #{jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="costCenterCode != null">
+        COST_CENTER_CODE = #{costCenterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="costCenterTypeDesc != null">
+        COST_CENTER_TYPE_DESC = #{costCenterTypeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCostCenterName != null">
+        COMPANY_COST_CENTER_NAME = #{companyCostCenterName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCostCenterCode != null">
+        COMPANY_COST_CENTER_CODE = #{companyCostCenterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="managerLvl != null">
+        MANAGER_LVL = #{managerLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCodeName != null">
+        JOB_CODE_NAME = #{jobCodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null">
+        LAST_MODIFY_DATE = #{lastModifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStatus != null">
+        EMPLOYEE_STATUS = #{employeeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="effdt != null">
+        EFFDT = #{effdt,jdbcType=VARCHAR},
+      </if>
+      <if test="locationName != null">
+        LOCATION_NAME = #{locationName,jdbcType=VARCHAR},
+      </if>
+      <if test="locationCode != null">
+        LOCATION_CODE = #{locationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        ID_CARD = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_com_employee">
+    update mc_com_employee
+    set EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=VARCHAR},
+      BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      ETHNIC_TYPE = #{ethnicType,jdbcType=VARCHAR},
+      DEPARTMENT_NAME = #{departmentName,jdbcType=VARCHAR},
+      DEPT_SHORT_NAME = #{deptShortName,jdbcType=VARCHAR},
+      DEPARTMENT_CODE = #{departmentCode,jdbcType=VARCHAR},
+      FIRST_WORK_DATE = #{firstWorkDate,jdbcType=VARCHAR},
+      JOIN_DATE = #{joinDate,jdbcType=VARCHAR},
+      POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      POSITION_CODE = #{positionCode,jdbcType=VARCHAR},
+      EDUCATION = #{education,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      APPOINT_NAME = #{appointName,jdbcType=VARCHAR},
+      EMPLOYEE_RCD = #{employeeRcd,jdbcType=INTEGER},
+      SUPERVISOR_ID_PATH = #{supervisorIdPath,jdbcType=VARCHAR},
+      SUPERVISOR_NAME_PATH = #{supervisorNamePath,jdbcType=VARCHAR},
+      JOB_CODE = #{jobCode,jdbcType=VARCHAR},
+      COST_CENTER_CODE = #{costCenterCode,jdbcType=VARCHAR},
+      COST_CENTER_TYPE_DESC = #{costCenterTypeDesc,jdbcType=VARCHAR},
+      COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      COMPANY_COST_CENTER_NAME = #{companyCostCenterName,jdbcType=VARCHAR},
+      COMPANY_COST_CENTER_CODE = #{companyCostCenterCode,jdbcType=VARCHAR},
+      LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      MANAGER_LVL = #{managerLvl,jdbcType=VARCHAR},
+      JOB_CODE_NAME = #{jobCodeName,jdbcType=VARCHAR},
+      LAST_MODIFY_DATE = #{lastModifyDate,jdbcType=VARCHAR},
+      EMPLOYEE_STATUS = #{employeeStatus,jdbcType=VARCHAR},
+      EFFDT = #{effdt,jdbcType=VARCHAR},
+      LOCATION_NAME = #{locationName,jdbcType=VARCHAR},
+      LOCATION_CODE = #{locationCode,jdbcType=VARCHAR},
+      ID_CARD = #{idCard,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

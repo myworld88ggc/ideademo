@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_proc_nodeMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_proc_node">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcVersion" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NodeId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NodeName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FindUserType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FindUserParam" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ApprovalAction" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="AutoApproval" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="IsMobile" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="IsBatch" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="IsActivie" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, ProcCode, ProcVersion, NodeId, NodeName, FindUserType, FindUserParam, ApprovalAction, 
+    AutoApproval, IsMobile, IsBatch, IsActivie, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_proc_node
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_proc_node
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_proc_node">
+    insert into mc_proc_node (Id, ProcCode, ProcVersion, 
+      NodeId, NodeName, FindUserType, 
+      FindUserParam, ApprovalAction, AutoApproval, 
+      IsMobile, IsBatch, IsActivie, RecordStatus, 
+      CreateTime, LastModifyTime)
+    values (#{id,jdbcType=VARCHAR}, #{proccode,jdbcType=VARCHAR}, #{procversion,jdbcType=VARCHAR}, 
+      #{nodeid,jdbcType=VARCHAR}, #{nodename,jdbcType=VARCHAR}, #{findusertype,jdbcType=VARCHAR}, 
+      #{finduserparam,jdbcType=VARCHAR}, #{approvalaction,jdbcType=VARCHAR}, #{autoapproval,jdbcType=BIT}, 
+      #{ismobile,jdbcType=BIT}, #{isbatch,jdbcType=BIT}, #{isactivie,jdbcType=BIT}, #{recordstatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_proc_node">
+    insert into mc_proc_node
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="proccode != null">
+        ProcCode,
+      </if>
+      <if test="procversion != null">
+        ProcVersion,
+      </if>
+      <if test="nodeid != null">
+        NodeId,
+      </if>
+      <if test="nodename != null">
+        NodeName,
+      </if>
+      <if test="findusertype != null">
+        FindUserType,
+      </if>
+      <if test="finduserparam != null">
+        FindUserParam,
+      </if>
+      <if test="approvalaction != null">
+        ApprovalAction,
+      </if>
+      <if test="autoapproval != null">
+        AutoApproval,
+      </if>
+      <if test="ismobile != null">
+        IsMobile,
+      </if>
+      <if test="isbatch != null">
+        IsBatch,
+      </if>
+      <if test="isactivie != null">
+        IsActivie,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="proccode != null">
+        #{proccode,jdbcType=VARCHAR},
+      </if>
+      <if test="procversion != null">
+        #{procversion,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeid != null">
+        #{nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="nodename != null">
+        #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="findusertype != null">
+        #{findusertype,jdbcType=VARCHAR},
+      </if>
+      <if test="finduserparam != null">
+        #{finduserparam,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalaction != null">
+        #{approvalaction,jdbcType=VARCHAR},
+      </if>
+      <if test="autoapproval != null">
+        #{autoapproval,jdbcType=BIT},
+      </if>
+      <if test="ismobile != null">
+        #{ismobile,jdbcType=BIT},
+      </if>
+      <if test="isbatch != null">
+        #{isbatch,jdbcType=BIT},
+      </if>
+      <if test="isactivie != null">
+        #{isactivie,jdbcType=BIT},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_proc_node">
+    update mc_proc_node
+    <set>
+      <if test="proccode != null">
+        ProcCode = #{proccode,jdbcType=VARCHAR},
+      </if>
+      <if test="procversion != null">
+        ProcVersion = #{procversion,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeid != null">
+        NodeId = #{nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="nodename != null">
+        NodeName = #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="findusertype != null">
+        FindUserType = #{findusertype,jdbcType=VARCHAR},
+      </if>
+      <if test="finduserparam != null">
+        FindUserParam = #{finduserparam,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalaction != null">
+        ApprovalAction = #{approvalaction,jdbcType=VARCHAR},
+      </if>
+      <if test="autoapproval != null">
+        AutoApproval = #{autoapproval,jdbcType=BIT},
+      </if>
+      <if test="ismobile != null">
+        IsMobile = #{ismobile,jdbcType=BIT},
+      </if>
+      <if test="isbatch != null">
+        IsBatch = #{isbatch,jdbcType=BIT},
+      </if>
+      <if test="isactivie != null">
+        IsActivie = #{isactivie,jdbcType=BIT},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_proc_node">
+    update mc_proc_node
+    set ProcCode = #{proccode,jdbcType=VARCHAR},
+      ProcVersion = #{procversion,jdbcType=VARCHAR},
+      NodeId = #{nodeid,jdbcType=VARCHAR},
+      NodeName = #{nodename,jdbcType=VARCHAR},
+      FindUserType = #{findusertype,jdbcType=VARCHAR},
+      FindUserParam = #{finduserparam,jdbcType=VARCHAR},
+      ApprovalAction = #{approvalaction,jdbcType=VARCHAR},
+      AutoApproval = #{autoapproval,jdbcType=BIT},
+      IsMobile = #{ismobile,jdbcType=BIT},
+      IsBatch = #{isbatch,jdbcType=BIT},
+      IsActivie = #{isactivie,jdbcType=BIT},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

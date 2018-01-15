@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_proc_typeMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_proc_type">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TypeCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TypeName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ParentTypeCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FullPathCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TypeOrder" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, TypeCode, TypeName, ParentTypeCode, FullPathCode, TypeOrder, RecordStatus, CreateTime, 
+    LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_proc_type
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_proc_type
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_proc_type">
+    insert into mc_proc_type (Id, TypeCode, TypeName, 
+      ParentTypeCode, FullPathCode, TypeOrder, 
+      RecordStatus, CreateTime, LastModifyTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{typecode,jdbcType=VARCHAR}, #{typename,jdbcType=VARCHAR}, 
+      #{parenttypecode,jdbcType=VARCHAR}, #{fullpathcode,jdbcType=VARCHAR}, #{typeorder,jdbcType=INTEGER}, 
+      #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_proc_type">
+    insert into mc_proc_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="typecode != null">
+        TypeCode,
+      </if>
+      <if test="typename != null">
+        TypeName,
+      </if>
+      <if test="parenttypecode != null">
+        ParentTypeCode,
+      </if>
+      <if test="fullpathcode != null">
+        FullPathCode,
+      </if>
+      <if test="typeorder != null">
+        TypeOrder,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="typecode != null">
+        #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null">
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttypecode != null">
+        #{parenttypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fullpathcode != null">
+        #{fullpathcode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeorder != null">
+        #{typeorder,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_proc_type">
+    update mc_proc_type
+    <set>
+      <if test="typecode != null">
+        TypeCode = #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null">
+        TypeName = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttypecode != null">
+        ParentTypeCode = #{parenttypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="fullpathcode != null">
+        FullPathCode = #{fullpathcode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeorder != null">
+        TypeOrder = #{typeorder,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_proc_type">
+    update mc_proc_type
+    set TypeCode = #{typecode,jdbcType=VARCHAR},
+      TypeName = #{typename,jdbcType=VARCHAR},
+      ParentTypeCode = #{parenttypecode,jdbcType=VARCHAR},
+      FullPathCode = #{fullpathcode,jdbcType=VARCHAR},
+      TypeOrder = #{typeorder,jdbcType=INTEGER},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_se_adminMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_se_admin">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="UserName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UserID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RoleType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTIme" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, UserName, UserID, RoleType, Status, RecordStatus, CreateTime, LastModifyTIme
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_se_admin
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mc_se_admin
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_se_admin">
+    insert into mc_se_admin (Id, UserName, UserID, 
+      RoleType, Status, RecordStatus, 
+      CreateTime, LastModifyTIme)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{roletype,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{recordstatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_se_admin">
+    insert into mc_se_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="userid != null">
+        UserID,
+      </if>
+      <if test="roletype != null">
+        RoleType,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTIme,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roletype != null">
+        #{roletype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_se_admin">
+    update mc_se_admin
+    <set>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        UserID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="roletype != null">
+        RoleType = #{roletype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTIme = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_se_admin">
+    update mc_se_admin
+    set UserName = #{username,jdbcType=VARCHAR},
+      UserID = #{userid,jdbcType=VARCHAR},
+      RoleType = #{roletype,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=INTEGER},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTIme = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -34,8 +34,8 @@ public class ActModelService {
             byte[] bpmnBytes = xmlConverter.convertToXML(bpmnModel);
 
             String processName = modelData.getName();
-            if (!processName.endsWith(".bpmn20.xml")) {
-                processName += ".bpmn20.xml";
+            if (!processName.endsWith(".bpmn.xml")) {
+                processName += ".bpmn.xml";
             }
 //			System.out.println("========="+processName+"============"+modelData.getName());
             ByteArrayInputStream in = new ByteArrayInputStream(bpmnBytes);

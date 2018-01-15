@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_proc_person_pushMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_proc_person_push">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RejectPush" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecodStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, UserId, ProcCode, RejectPush, RecodStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_proc_person_push
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_proc_person_push
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_proc_person_push">
+    insert into mc_proc_person_push (Id, UserId, ProcCode, 
+      RejectPush, RecodStatus, CreateTime, 
+      LastModifyTime)
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{proccode,jdbcType=VARCHAR}, 
+      #{rejectpush,jdbcType=VARCHAR}, #{recodstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_proc_person_push">
+    insert into mc_proc_person_push
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="proccode != null">
+        ProcCode,
+      </if>
+      <if test="rejectpush != null">
+        RejectPush,
+      </if>
+      <if test="recodstatus != null">
+        RecodStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="proccode != null">
+        #{proccode,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectpush != null">
+        #{rejectpush,jdbcType=VARCHAR},
+      </if>
+      <if test="recodstatus != null">
+        #{recodstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_proc_person_push">
+    update mc_proc_person_push
+    <set>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="proccode != null">
+        ProcCode = #{proccode,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectpush != null">
+        RejectPush = #{rejectpush,jdbcType=VARCHAR},
+      </if>
+      <if test="recodstatus != null">
+        RecodStatus = #{recodstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_proc_person_push">
+    update mc_proc_person_push
+    set UserId = #{userid,jdbcType=VARCHAR},
+      ProcCode = #{proccode,jdbcType=VARCHAR},
+      RejectPush = #{rejectpush,jdbcType=VARCHAR},
+      RecodStatus = #{recodstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

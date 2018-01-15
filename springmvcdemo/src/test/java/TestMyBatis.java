@@ -14,10 +14,8 @@ import com.alibaba.fastjson.JSON;
 import com.will.pojo.User;
 import com.will.service.IUserService;
 
-@RunWith(SpringJUnit4ClassRunner.class) // 表示继承了SpringJUnit4ClassRunner类
-@ContextConfiguration(locations = {"classpath:config/spring-mybatis.xml"})
 
-public class TestMyBatis {
+public class TestMyBatis extends TestMyBatisBase {
     private static Logger logger = Logger.getLogger(TestMyBatis.class);
     // private ApplicationContext ac = null;
     @Resource

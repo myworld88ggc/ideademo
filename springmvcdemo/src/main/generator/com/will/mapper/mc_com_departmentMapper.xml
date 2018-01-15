@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_com_departmentMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_com_department">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="DEPT_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_TYPE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_TYPE_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_SHORT_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LEADER_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_LEVEL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_FULL_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPT_FULL_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SET_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAST_MODIFY_DATE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EFFDT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, DEPT_ID, DEPT_NAME, DEPT_TYPE, DEPT_TYPE_NAME, DEPT_SHORT_NAME, LEADER_ID, DEPT_LEVEL, 
+    DEPT_CODE, DEPT_FULL_CODE, DEPT_FULL_NAME, SET_ID, COMPANY_NAME, LAST_MODIFY_DATE, 
+    COMPANY_CODE, EFFDT, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_com_department
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mc_com_department
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_com_department">
+    insert into mc_com_department (Id, DEPT_ID, DEPT_NAME, 
+      DEPT_TYPE, DEPT_TYPE_NAME, DEPT_SHORT_NAME, 
+      LEADER_ID, DEPT_LEVEL, DEPT_CODE, 
+      DEPT_FULL_CODE, DEPT_FULL_NAME, SET_ID, 
+      COMPANY_NAME, LAST_MODIFY_DATE, COMPANY_CODE, 
+      EFFDT, RecordStatus, CreateTime, 
+      LastModifyTime)
+    values (#{id,jdbcType=BIGINT}, #{deptId,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, 
+      #{deptType,jdbcType=VARCHAR}, #{deptTypeName,jdbcType=VARCHAR}, #{deptShortName,jdbcType=VARCHAR}, 
+      #{leaderId,jdbcType=VARCHAR}, #{deptLevel,jdbcType=VARCHAR}, #{deptCode,jdbcType=VARCHAR}, 
+      #{deptFullCode,jdbcType=VARCHAR}, #{deptFullName,jdbcType=VARCHAR}, #{setId,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{lastModifyDate,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
+      #{effdt,jdbcType=VARCHAR}, #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_com_department">
+    insert into mc_com_department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="deptId != null">
+        DEPT_ID,
+      </if>
+      <if test="deptName != null">
+        DEPT_NAME,
+      </if>
+      <if test="deptType != null">
+        DEPT_TYPE,
+      </if>
+      <if test="deptTypeName != null">
+        DEPT_TYPE_NAME,
+      </if>
+      <if test="deptShortName != null">
+        DEPT_SHORT_NAME,
+      </if>
+      <if test="leaderId != null">
+        LEADER_ID,
+      </if>
+      <if test="deptLevel != null">
+        DEPT_LEVEL,
+      </if>
+      <if test="deptCode != null">
+        DEPT_CODE,
+      </if>
+      <if test="deptFullCode != null">
+        DEPT_FULL_CODE,
+      </if>
+      <if test="deptFullName != null">
+        DEPT_FULL_NAME,
+      </if>
+      <if test="setId != null">
+        SET_ID,
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME,
+      </if>
+      <if test="lastModifyDate != null">
+        LAST_MODIFY_DATE,
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE,
+      </if>
+      <if test="effdt != null">
+        EFFDT,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptType != null">
+        #{deptType,jdbcType=VARCHAR},
+      </if>
+      <if test="deptTypeName != null">
+        #{deptTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptShortName != null">
+        #{deptShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLevel != null">
+        #{deptLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptFullCode != null">
+        #{deptFullCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptFullName != null">
+        #{deptFullName,jdbcType=VARCHAR},
+      </if>
+      <if test="setId != null">
+        #{setId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null">
+        #{lastModifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="effdt != null">
+        #{effdt,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_com_department">
+    update mc_com_department
+    <set>
+      <if test="deptId != null">
+        DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptType != null">
+        DEPT_TYPE = #{deptType,jdbcType=VARCHAR},
+      </if>
+      <if test="deptTypeName != null">
+        DEPT_TYPE_NAME = #{deptTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptShortName != null">
+        DEPT_SHORT_NAME = #{deptShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLevel != null">
+        DEPT_LEVEL = #{deptLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptFullCode != null">
+        DEPT_FULL_CODE = #{deptFullCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptFullName != null">
+        DEPT_FULL_NAME = #{deptFullName,jdbcType=VARCHAR},
+      </if>
+      <if test="setId != null">
+        SET_ID = #{setId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyDate != null">
+        LAST_MODIFY_DATE = #{lastModifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="effdt != null">
+        EFFDT = #{effdt,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_com_department">
+    update mc_com_department
+    set DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      DEPT_TYPE = #{deptType,jdbcType=VARCHAR},
+      DEPT_TYPE_NAME = #{deptTypeName,jdbcType=VARCHAR},
+      DEPT_SHORT_NAME = #{deptShortName,jdbcType=VARCHAR},
+      LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      DEPT_LEVEL = #{deptLevel,jdbcType=VARCHAR},
+      DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+      DEPT_FULL_CODE = #{deptFullCode,jdbcType=VARCHAR},
+      DEPT_FULL_NAME = #{deptFullName,jdbcType=VARCHAR},
+      SET_ID = #{setId,jdbcType=VARCHAR},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      LAST_MODIFY_DATE = #{lastModifyDate,jdbcType=VARCHAR},
+      COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      EFFDT = #{effdt,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

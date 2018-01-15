@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_se_dictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_se_dictionary">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="Code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ParentCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FullPath" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DicType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="DisplayName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DicValue" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DicOrder" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="Remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, Code, ParentCode, FullPath, DicType, DisplayName, DicValue, DicOrder, Remark, 
+    RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_se_dictionary
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mc_se_dictionary
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_se_dictionary">
+    insert into mc_se_dictionary (Id, Code, ParentCode, 
+      FullPath, DicType, DisplayName, 
+      DicValue, DicOrder, Remark, 
+      RecordStatus, CreateTime, LastModifyTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{parentcode,jdbcType=VARCHAR}, 
+      #{fullpath,jdbcType=VARCHAR}, #{dictype,jdbcType=INTEGER}, #{displayname,jdbcType=VARCHAR}, 
+      #{dicvalue,jdbcType=VARCHAR}, #{dicorder,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_se_dictionary">
+    insert into mc_se_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="code != null">
+        Code,
+      </if>
+      <if test="parentcode != null">
+        ParentCode,
+      </if>
+      <if test="fullpath != null">
+        FullPath,
+      </if>
+      <if test="dictype != null">
+        DicType,
+      </if>
+      <if test="displayname != null">
+        DisplayName,
+      </if>
+      <if test="dicvalue != null">
+        DicValue,
+      </if>
+      <if test="dicorder != null">
+        DicOrder,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null">
+        #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fullpath != null">
+        #{fullpath,jdbcType=VARCHAR},
+      </if>
+      <if test="dictype != null">
+        #{dictype,jdbcType=INTEGER},
+      </if>
+      <if test="displayname != null">
+        #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="dicvalue != null">
+        #{dicvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="dicorder != null">
+        #{dicorder,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_se_dictionary">
+    update mc_se_dictionary
+    <set>
+      <if test="code != null">
+        Code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null">
+        ParentCode = #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fullpath != null">
+        FullPath = #{fullpath,jdbcType=VARCHAR},
+      </if>
+      <if test="dictype != null">
+        DicType = #{dictype,jdbcType=INTEGER},
+      </if>
+      <if test="displayname != null">
+        DisplayName = #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="dicvalue != null">
+        DicValue = #{dicvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="dicorder != null">
+        DicOrder = #{dicorder,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_se_dictionary">
+    update mc_se_dictionary
+    set Code = #{code,jdbcType=VARCHAR},
+      ParentCode = #{parentcode,jdbcType=VARCHAR},
+      FullPath = #{fullpath,jdbcType=VARCHAR},
+      DicType = #{dictype,jdbcType=INTEGER},
+      DisplayName = #{displayname,jdbcType=VARCHAR},
+      DicValue = #{dicvalue,jdbcType=VARCHAR},
+      DicOrder = #{dicorder,jdbcType=INTEGER},
+      Remark = #{remark,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

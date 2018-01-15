@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_ru_proc_participantMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_ru_proc_participant">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="ProcInstId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, ProcInstId, PUserId, PType, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_ru_proc_participant
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mc_ru_proc_participant
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_ru_proc_participant">
+    insert into mc_ru_proc_participant (Id, ProcInstId, PUserId, 
+      PType, RecordStatus, CreateTime, 
+      LastModifyTime)
+    values (#{id,jdbcType=BIGINT}, #{procinstid,jdbcType=VARCHAR}, #{puserid,jdbcType=VARCHAR}, 
+      #{ptype,jdbcType=INTEGER}, #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_ru_proc_participant">
+    insert into mc_ru_proc_participant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="procinstid != null">
+        ProcInstId,
+      </if>
+      <if test="puserid != null">
+        PUserId,
+      </if>
+      <if test="ptype != null">
+        PType,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="procinstid != null">
+        #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="puserid != null">
+        #{puserid,jdbcType=VARCHAR},
+      </if>
+      <if test="ptype != null">
+        #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_ru_proc_participant">
+    update mc_ru_proc_participant
+    <set>
+      <if test="procinstid != null">
+        ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="puserid != null">
+        PUserId = #{puserid,jdbcType=VARCHAR},
+      </if>
+      <if test="ptype != null">
+        PType = #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_ru_proc_participant">
+    update mc_ru_proc_participant
+    set ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      PUserId = #{puserid,jdbcType=VARCHAR},
+      PType = #{ptype,jdbcType=INTEGER},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

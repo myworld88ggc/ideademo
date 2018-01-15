@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_ru_attachmentMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_ru_attachment">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="OriginalFileName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FileName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FileType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FileSize" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="UploadUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UploadTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="URL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RecordTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, OriginalFileName, FileName, FileType, FileSize, UploadUserId, UploadTime, URL, 
+    RecordStatus, RecordTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_ru_attachment
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_ru_attachment
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_ru_attachment">
+    insert into mc_ru_attachment (Id, OriginalFileName, FileName, 
+      FileType, FileSize, UploadUserId, 
+      UploadTime, URL, RecordStatus, 
+      RecordTime, LastModifyTime)
+    values (#{id,jdbcType=VARCHAR}, #{originalfilename,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}, 
+      #{filetype,jdbcType=VARCHAR}, #{filesize,jdbcType=BIGINT}, #{uploaduserid,jdbcType=VARCHAR}, 
+      #{uploadtime,jdbcType=TIMESTAMP}, #{url,jdbcType=VARCHAR}, #{recordstatus,jdbcType=INTEGER}, 
+      #{recordtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_ru_attachment">
+    insert into mc_ru_attachment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="originalfilename != null">
+        OriginalFileName,
+      </if>
+      <if test="filename != null">
+        FileName,
+      </if>
+      <if test="filetype != null">
+        FileType,
+      </if>
+      <if test="filesize != null">
+        FileSize,
+      </if>
+      <if test="uploaduserid != null">
+        UploadUserId,
+      </if>
+      <if test="uploadtime != null">
+        UploadTime,
+      </if>
+      <if test="url != null">
+        URL,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="recordtime != null">
+        RecordTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="originalfilename != null">
+        #{originalfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null">
+        #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null">
+        #{filesize,jdbcType=BIGINT},
+      </if>
+      <if test="uploaduserid != null">
+        #{uploaduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordtime != null">
+        #{recordtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_ru_attachment">
+    update mc_ru_attachment
+    <set>
+      <if test="originalfilename != null">
+        OriginalFileName = #{originalfilename,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        FileName = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null">
+        FileType = #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null">
+        FileSize = #{filesize,jdbcType=BIGINT},
+      </if>
+      <if test="uploaduserid != null">
+        UploadUserId = #{uploaduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        UploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null">
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordtime != null">
+        RecordTime = #{recordtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_ru_attachment">
+    update mc_ru_attachment
+    set OriginalFileName = #{originalfilename,jdbcType=VARCHAR},
+      FileName = #{filename,jdbcType=VARCHAR},
+      FileType = #{filetype,jdbcType=VARCHAR},
+      FileSize = #{filesize,jdbcType=BIGINT},
+      UploadUserId = #{uploaduserid,jdbcType=VARCHAR},
+      UploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+      URL = #{url,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      RecordTime = #{recordtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_ru_procinstMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_ru_procinst">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcInstId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SystemCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcessName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcessCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcInstTitle" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ImportantContent" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcessState" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ProcessStateText" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="StartTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="EndTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="CreateUserID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CreateUserName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CreateUserDepartment" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CreateUserPosition" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ApplyUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ApplyUserName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ApplyUserDepartment" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ApplyUserPosition" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CannotReviewApprovalLogUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PlatformType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, ProcInstId, SystemCode, ProcessName, ProcessCode, ProcInstTitle, ImportantContent, 
+    Summary, ProcessState, ProcessStateText, StartTime, EndTime, CreateUserID, CreateUserName, 
+    CreateUserDepartment, CreateUserPosition, ApplyUserId, ApplyUserName, ApplyUserDepartment, 
+    ApplyUserPosition, CannotReviewApprovalLogUserId, PlatformType, RecordStatus, CreateTime, 
+    LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_ru_procinst
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_ru_procinst
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_ru_procinst">
+    insert into mc_ru_procinst (Id, ProcInstId, SystemCode, 
+      ProcessName, ProcessCode, ProcInstTitle, 
+      ImportantContent, Summary, ProcessState, 
+      ProcessStateText, StartTime, EndTime, 
+      CreateUserID, CreateUserName, CreateUserDepartment, 
+      CreateUserPosition, ApplyUserId, ApplyUserName, 
+      ApplyUserDepartment, ApplyUserPosition, 
+      CannotReviewApprovalLogUserId, PlatformType, 
+      RecordStatus, CreateTime, LastModifyTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{procinstid,jdbcType=VARCHAR}, #{systemcode,jdbcType=VARCHAR}, 
+      #{processname,jdbcType=VARCHAR}, #{processcode,jdbcType=VARCHAR}, #{procinsttitle,jdbcType=VARCHAR}, 
+      #{importantcontent,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{processstate,jdbcType=INTEGER}, 
+      #{processstatetext,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{createuserid,jdbcType=VARCHAR}, #{createusername,jdbcType=VARCHAR}, #{createuserdepartment,jdbcType=VARCHAR}, 
+      #{createuserposition,jdbcType=VARCHAR}, #{applyuserid,jdbcType=VARCHAR}, #{applyusername,jdbcType=VARCHAR}, 
+      #{applyuserdepartment,jdbcType=VARCHAR}, #{applyuserposition,jdbcType=VARCHAR}, 
+      #{cannotreviewapprovalloguserid,jdbcType=VARCHAR}, #{platformtype,jdbcType=INTEGER}, 
+      #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_ru_procinst">
+    insert into mc_ru_procinst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="procinstid != null">
+        ProcInstId,
+      </if>
+      <if test="systemcode != null">
+        SystemCode,
+      </if>
+      <if test="processname != null">
+        ProcessName,
+      </if>
+      <if test="processcode != null">
+        ProcessCode,
+      </if>
+      <if test="procinsttitle != null">
+        ProcInstTitle,
+      </if>
+      <if test="importantcontent != null">
+        ImportantContent,
+      </if>
+      <if test="summary != null">
+        Summary,
+      </if>
+      <if test="processstate != null">
+        ProcessState,
+      </if>
+      <if test="processstatetext != null">
+        ProcessStateText,
+      </if>
+      <if test="starttime != null">
+        StartTime,
+      </if>
+      <if test="endtime != null">
+        EndTime,
+      </if>
+      <if test="createuserid != null">
+        CreateUserID,
+      </if>
+      <if test="createusername != null">
+        CreateUserName,
+      </if>
+      <if test="createuserdepartment != null">
+        CreateUserDepartment,
+      </if>
+      <if test="createuserposition != null">
+        CreateUserPosition,
+      </if>
+      <if test="applyuserid != null">
+        ApplyUserId,
+      </if>
+      <if test="applyusername != null">
+        ApplyUserName,
+      </if>
+      <if test="applyuserdepartment != null">
+        ApplyUserDepartment,
+      </if>
+      <if test="applyuserposition != null">
+        ApplyUserPosition,
+      </if>
+      <if test="cannotreviewapprovalloguserid != null">
+        CannotReviewApprovalLogUserId,
+      </if>
+      <if test="platformtype != null">
+        PlatformType,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="procinstid != null">
+        #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="systemcode != null">
+        #{systemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="processname != null">
+        #{processname,jdbcType=VARCHAR},
+      </if>
+      <if test="processcode != null">
+        #{processcode,jdbcType=VARCHAR},
+      </if>
+      <if test="procinsttitle != null">
+        #{procinsttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="importantcontent != null">
+        #{importantcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="processstate != null">
+        #{processstate,jdbcType=INTEGER},
+      </if>
+      <if test="processstatetext != null">
+        #{processstatetext,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null">
+        #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserdepartment != null">
+        #{createuserdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserposition != null">
+        #{createuserposition,jdbcType=VARCHAR},
+      </if>
+      <if test="applyuserid != null">
+        #{applyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyusername != null">
+        #{applyusername,jdbcType=VARCHAR},
+      </if>
+      <if test="applyuserdepartment != null">
+        #{applyuserdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="applyuserposition != null">
+        #{applyuserposition,jdbcType=VARCHAR},
+      </if>
+      <if test="cannotreviewapprovalloguserid != null">
+        #{cannotreviewapprovalloguserid,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null">
+        #{platformtype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_ru_procinst">
+    update mc_ru_procinst
+    <set>
+      <if test="procinstid != null">
+        ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="systemcode != null">
+        SystemCode = #{systemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="processname != null">
+        ProcessName = #{processname,jdbcType=VARCHAR},
+      </if>
+      <if test="processcode != null">
+        ProcessCode = #{processcode,jdbcType=VARCHAR},
+      </if>
+      <if test="procinsttitle != null">
+        ProcInstTitle = #{procinsttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="importantcontent != null">
+        ImportantContent = #{importantcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        Summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="processstate != null">
+        ProcessState = #{processstate,jdbcType=INTEGER},
+      </if>
+      <if test="processstatetext != null">
+        ProcessStateText = #{processstatetext,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        StartTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        EndTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        CreateUserID = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null">
+        CreateUserName = #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserdepartment != null">
+        CreateUserDepartment = #{createuserdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserposition != null">
+        CreateUserPosition = #{createuserposition,jdbcType=VARCHAR},
+      </if>
+      <if test="applyuserid != null">
+        ApplyUserId = #{applyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyusername != null">
+        ApplyUserName = #{applyusername,jdbcType=VARCHAR},
+      </if>
+      <if test="applyuserdepartment != null">
+        ApplyUserDepartment = #{applyuserdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="applyuserposition != null">
+        ApplyUserPosition = #{applyuserposition,jdbcType=VARCHAR},
+      </if>
+      <if test="cannotreviewapprovalloguserid != null">
+        CannotReviewApprovalLogUserId = #{cannotreviewapprovalloguserid,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null">
+        PlatformType = #{platformtype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_ru_procinst">
+    update mc_ru_procinst
+    set ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      SystemCode = #{systemcode,jdbcType=VARCHAR},
+      ProcessName = #{processname,jdbcType=VARCHAR},
+      ProcessCode = #{processcode,jdbcType=VARCHAR},
+      ProcInstTitle = #{procinsttitle,jdbcType=VARCHAR},
+      ImportantContent = #{importantcontent,jdbcType=VARCHAR},
+      Summary = #{summary,jdbcType=VARCHAR},
+      ProcessState = #{processstate,jdbcType=INTEGER},
+      ProcessStateText = #{processstatetext,jdbcType=VARCHAR},
+      StartTime = #{starttime,jdbcType=TIMESTAMP},
+      EndTime = #{endtime,jdbcType=TIMESTAMP},
+      CreateUserID = #{createuserid,jdbcType=VARCHAR},
+      CreateUserName = #{createusername,jdbcType=VARCHAR},
+      CreateUserDepartment = #{createuserdepartment,jdbcType=VARCHAR},
+      CreateUserPosition = #{createuserposition,jdbcType=VARCHAR},
+      ApplyUserId = #{applyuserid,jdbcType=VARCHAR},
+      ApplyUserName = #{applyusername,jdbcType=VARCHAR},
+      ApplyUserDepartment = #{applyuserdepartment,jdbcType=VARCHAR},
+      ApplyUserPosition = #{applyuserposition,jdbcType=VARCHAR},
+      CannotReviewApprovalLogUserId = #{cannotreviewapprovalloguserid,jdbcType=VARCHAR},
+      PlatformType = #{platformtype,jdbcType=INTEGER},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

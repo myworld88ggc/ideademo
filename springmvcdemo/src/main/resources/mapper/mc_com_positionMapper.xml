@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_com_positionMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_com_position">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="COMPANY_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPARTMENT_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DEPARTMENT_CODE" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="POSITION_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="POSITION_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="POSITION_SHORT_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REMARK" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOCATION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LOCATION_DES" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REPORT_REAL_LINE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REPORT_DOTTED_LINE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FULL_PART_TIME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ISKEYPOSITION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SHIFT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="STATUS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DATA_ORIGIN" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EXT1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EXT2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BUCODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REGION_TMP" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EFFDT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, COMPANY_NAME, COMPANY_CODE, DEPARTMENT_NAME, DEPARTMENT_CODE, POSITION_CODE, 
+    POSITION_NAME, POSITION_SHORT_NAME, REMARK, LOCATION, LOCATION_DES, REPORT_REAL_LINE, 
+    REPORT_DOTTED_LINE, FULL_PART_TIME, ISKEYPOSITION, SHIFT, STATUS, DATA_ORIGIN, EXT1, 
+    EXT2, BUCODE, REGION_TMP, EFFDT, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_com_position
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mc_com_position
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_com_position">
+    insert into mc_com_position (Id, COMPANY_NAME, COMPANY_CODE, 
+      DEPARTMENT_NAME, DEPARTMENT_CODE, POSITION_CODE, 
+      POSITION_NAME, POSITION_SHORT_NAME, REMARK, 
+      LOCATION, LOCATION_DES, REPORT_REAL_LINE, 
+      REPORT_DOTTED_LINE, FULL_PART_TIME, ISKEYPOSITION, 
+      SHIFT, STATUS, DATA_ORIGIN, 
+      EXT1, EXT2, BUCODE, 
+      REGION_TMP, EFFDT, RecordStatus, 
+      CreateTime, LastModifyTime)
+    values (#{id,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
+      #{departmentName,jdbcType=VARCHAR}, #{departmentCode,jdbcType=CHAR}, #{positionCode,jdbcType=VARCHAR}, 
+      #{positionName,jdbcType=VARCHAR}, #{positionShortName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{locationDes,jdbcType=VARCHAR}, #{reportRealLine,jdbcType=VARCHAR}, 
+      #{reportDottedLine,jdbcType=VARCHAR}, #{fullPartTime,jdbcType=VARCHAR}, #{iskeyposition,jdbcType=VARCHAR}, 
+      #{shift,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{dataOrigin,jdbcType=VARCHAR}, 
+      #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, #{bucode,jdbcType=VARCHAR}, 
+      #{regionTmp,jdbcType=VARCHAR}, #{effdt,jdbcType=VARCHAR}, #{recordstatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_com_position">
+    insert into mc_com_position
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME,
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE,
+      </if>
+      <if test="departmentName != null">
+        DEPARTMENT_NAME,
+      </if>
+      <if test="departmentCode != null">
+        DEPARTMENT_CODE,
+      </if>
+      <if test="positionCode != null">
+        POSITION_CODE,
+      </if>
+      <if test="positionName != null">
+        POSITION_NAME,
+      </if>
+      <if test="positionShortName != null">
+        POSITION_SHORT_NAME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="location != null">
+        LOCATION,
+      </if>
+      <if test="locationDes != null">
+        LOCATION_DES,
+      </if>
+      <if test="reportRealLine != null">
+        REPORT_REAL_LINE,
+      </if>
+      <if test="reportDottedLine != null">
+        REPORT_DOTTED_LINE,
+      </if>
+      <if test="fullPartTime != null">
+        FULL_PART_TIME,
+      </if>
+      <if test="iskeyposition != null">
+        ISKEYPOSITION,
+      </if>
+      <if test="shift != null">
+        SHIFT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="dataOrigin != null">
+        DATA_ORIGIN,
+      </if>
+      <if test="ext1 != null">
+        EXT1,
+      </if>
+      <if test="ext2 != null">
+        EXT2,
+      </if>
+      <if test="bucode != null">
+        BUCODE,
+      </if>
+      <if test="regionTmp != null">
+        REGION_TMP,
+      </if>
+      <if test="effdt != null">
+        EFFDT,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentCode != null">
+        #{departmentCode,jdbcType=CHAR},
+      </if>
+      <if test="positionCode != null">
+        #{positionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionShortName != null">
+        #{positionShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="locationDes != null">
+        #{locationDes,jdbcType=VARCHAR},
+      </if>
+      <if test="reportRealLine != null">
+        #{reportRealLine,jdbcType=VARCHAR},
+      </if>
+      <if test="reportDottedLine != null">
+        #{reportDottedLine,jdbcType=VARCHAR},
+      </if>
+      <if test="fullPartTime != null">
+        #{fullPartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="iskeyposition != null">
+        #{iskeyposition,jdbcType=VARCHAR},
+      </if>
+      <if test="shift != null">
+        #{shift,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dataOrigin != null">
+        #{dataOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="bucode != null">
+        #{bucode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionTmp != null">
+        #{regionTmp,jdbcType=VARCHAR},
+      </if>
+      <if test="effdt != null">
+        #{effdt,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_com_position">
+    update mc_com_position
+    <set>
+      <if test="companyName != null">
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        DEPARTMENT_NAME = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentCode != null">
+        DEPARTMENT_CODE = #{departmentCode,jdbcType=CHAR},
+      </if>
+      <if test="positionCode != null">
+        POSITION_CODE = #{positionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null">
+        POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="positionShortName != null">
+        POSITION_SHORT_NAME = #{positionShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="locationDes != null">
+        LOCATION_DES = #{locationDes,jdbcType=VARCHAR},
+      </if>
+      <if test="reportRealLine != null">
+        REPORT_REAL_LINE = #{reportRealLine,jdbcType=VARCHAR},
+      </if>
+      <if test="reportDottedLine != null">
+        REPORT_DOTTED_LINE = #{reportDottedLine,jdbcType=VARCHAR},
+      </if>
+      <if test="fullPartTime != null">
+        FULL_PART_TIME = #{fullPartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="iskeyposition != null">
+        ISKEYPOSITION = #{iskeyposition,jdbcType=VARCHAR},
+      </if>
+      <if test="shift != null">
+        SHIFT = #{shift,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dataOrigin != null">
+        DATA_ORIGIN = #{dataOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="ext1 != null">
+        EXT1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        EXT2 = #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="bucode != null">
+        BUCODE = #{bucode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionTmp != null">
+        REGION_TMP = #{regionTmp,jdbcType=VARCHAR},
+      </if>
+      <if test="effdt != null">
+        EFFDT = #{effdt,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_com_position">
+    update mc_com_position
+    set COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      DEPARTMENT_NAME = #{departmentName,jdbcType=VARCHAR},
+      DEPARTMENT_CODE = #{departmentCode,jdbcType=CHAR},
+      POSITION_CODE = #{positionCode,jdbcType=VARCHAR},
+      POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      POSITION_SHORT_NAME = #{positionShortName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      LOCATION = #{location,jdbcType=VARCHAR},
+      LOCATION_DES = #{locationDes,jdbcType=VARCHAR},
+      REPORT_REAL_LINE = #{reportRealLine,jdbcType=VARCHAR},
+      REPORT_DOTTED_LINE = #{reportDottedLine,jdbcType=VARCHAR},
+      FULL_PART_TIME = #{fullPartTime,jdbcType=VARCHAR},
+      ISKEYPOSITION = #{iskeyposition,jdbcType=VARCHAR},
+      SHIFT = #{shift,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      DATA_ORIGIN = #{dataOrigin,jdbcType=VARCHAR},
+      EXT1 = #{ext1,jdbcType=VARCHAR},
+      EXT2 = #{ext2,jdbcType=VARCHAR},
+      BUCODE = #{bucode,jdbcType=VARCHAR},
+      REGION_TMP = #{regionTmp,jdbcType=VARCHAR},
+      EFFDT = #{effdt,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

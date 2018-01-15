@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_com_groupMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_com_group">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GroupName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GroupCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GroupLeader" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GroupType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ParentGroupCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ReportPathCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ReportPathName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, GroupName, GroupCode, GroupLeader, GroupType, ParentGroupCode, ReportPathCode, 
+    ReportPathName, Remark, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_com_group
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_com_group
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_com_group">
+    insert into mc_com_group (Id, GroupName, GroupCode, 
+      GroupLeader, GroupType, ParentGroupCode, 
+      ReportPathCode, ReportPathName, Remark, 
+      RecordStatus, CreateTime, LastModifyTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{groupname,jdbcType=VARCHAR}, #{groupcode,jdbcType=VARCHAR}, 
+      #{groupleader,jdbcType=VARCHAR}, #{grouptype,jdbcType=INTEGER}, #{parentgroupcode,jdbcType=VARCHAR}, 
+      #{reportpathcode,jdbcType=VARCHAR}, #{reportpathname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_com_group">
+    insert into mc_com_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="groupname != null">
+        GroupName,
+      </if>
+      <if test="groupcode != null">
+        GroupCode,
+      </if>
+      <if test="groupleader != null">
+        GroupLeader,
+      </if>
+      <if test="grouptype != null">
+        GroupType,
+      </if>
+      <if test="parentgroupcode != null">
+        ParentGroupCode,
+      </if>
+      <if test="reportpathcode != null">
+        ReportPathCode,
+      </if>
+      <if test="reportpathname != null">
+        ReportPathName,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null">
+        #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupcode != null">
+        #{groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupleader != null">
+        #{groupleader,jdbcType=VARCHAR},
+      </if>
+      <if test="grouptype != null">
+        #{grouptype,jdbcType=INTEGER},
+      </if>
+      <if test="parentgroupcode != null">
+        #{parentgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportpathcode != null">
+        #{reportpathcode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportpathname != null">
+        #{reportpathname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_com_group">
+    update mc_com_group
+    <set>
+      <if test="groupname != null">
+        GroupName = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupcode != null">
+        GroupCode = #{groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupleader != null">
+        GroupLeader = #{groupleader,jdbcType=VARCHAR},
+      </if>
+      <if test="grouptype != null">
+        GroupType = #{grouptype,jdbcType=INTEGER},
+      </if>
+      <if test="parentgroupcode != null">
+        ParentGroupCode = #{parentgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportpathcode != null">
+        ReportPathCode = #{reportpathcode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportpathname != null">
+        ReportPathName = #{reportpathname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_com_group">
+    update mc_com_group
+    set GroupName = #{groupname,jdbcType=VARCHAR},
+      GroupCode = #{groupcode,jdbcType=VARCHAR},
+      GroupLeader = #{groupleader,jdbcType=VARCHAR},
+      GroupType = #{grouptype,jdbcType=INTEGER},
+      ParentGroupCode = #{parentgroupcode,jdbcType=VARCHAR},
+      ReportPathCode = #{reportpathcode,jdbcType=VARCHAR},
+      ReportPathName = #{reportpathname,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

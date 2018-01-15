@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_proc_user_in_roleMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_proc_user_in_role">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RoleCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DepartmentCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DepartmentName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UserName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="UserDepartment" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, RoleCode, DepartmentCode, DepartmentName, UserName, UserId, UserDepartment, RecordStatus, 
+    CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_proc_user_in_role
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_proc_user_in_role
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_proc_user_in_role">
+    insert into mc_proc_user_in_role (Id, RoleCode, DepartmentCode, 
+      DepartmentName, UserName, UserId, 
+      UserDepartment, RecordStatus, CreateTime, 
+      LastModifyTime)
+    values (#{id,jdbcType=VARCHAR}, #{rolecode,jdbcType=VARCHAR}, #{departmentcode,jdbcType=VARCHAR}, 
+      #{departmentname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{userdepartment,jdbcType=VARCHAR}, #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_proc_user_in_role">
+    insert into mc_proc_user_in_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="rolecode != null">
+        RoleCode,
+      </if>
+      <if test="departmentcode != null">
+        DepartmentCode,
+      </if>
+      <if test="departmentname != null">
+        DepartmentName,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="userdepartment != null">
+        UserDepartment,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rolecode != null">
+        #{rolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentcode != null">
+        #{departmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentname != null">
+        #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userdepartment != null">
+        #{userdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_proc_user_in_role">
+    update mc_proc_user_in_role
+    <set>
+      <if test="rolecode != null">
+        RoleCode = #{rolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentcode != null">
+        DepartmentCode = #{departmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentname != null">
+        DepartmentName = #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="userdepartment != null">
+        UserDepartment = #{userdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_proc_user_in_role">
+    update mc_proc_user_in_role
+    set RoleCode = #{rolecode,jdbcType=VARCHAR},
+      DepartmentCode = #{departmentcode,jdbcType=VARCHAR},
+      DepartmentName = #{departmentname,jdbcType=VARCHAR},
+      UserName = #{username,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=VARCHAR},
+      UserDepartment = #{userdepartment,jdbcType=VARCHAR},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

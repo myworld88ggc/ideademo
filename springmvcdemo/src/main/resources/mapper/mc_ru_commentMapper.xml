@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_ru_commentMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_ru_comment">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcInstId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TaskId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CommentUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CommentUserName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ContentType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CommentTo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CommentContent" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CommentTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, ProcInstId, TaskId, CommentUserId, CommentUserName, ContentType, CommentTo, CommentContent, 
+    CommentTime, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_ru_comment
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_ru_comment
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_ru_comment">
+    insert into mc_ru_comment (Id, ProcInstId, TaskId, 
+      CommentUserId, CommentUserName, ContentType, 
+      CommentTo, CommentContent, CommentTime, 
+      RecordStatus, CreateTime, LastModifyTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{procinstid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, 
+      #{commentuserid,jdbcType=VARCHAR}, #{commentusername,jdbcType=VARCHAR}, #{contenttype,jdbcType=INTEGER}, 
+      #{commentto,jdbcType=VARCHAR}, #{commentcontent,jdbcType=VARCHAR}, #{commenttime,jdbcType=TIMESTAMP}, 
+      #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_ru_comment">
+    insert into mc_ru_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="procinstid != null">
+        ProcInstId,
+      </if>
+      <if test="taskid != null">
+        TaskId,
+      </if>
+      <if test="commentuserid != null">
+        CommentUserId,
+      </if>
+      <if test="commentusername != null">
+        CommentUserName,
+      </if>
+      <if test="contenttype != null">
+        ContentType,
+      </if>
+      <if test="commentto != null">
+        CommentTo,
+      </if>
+      <if test="commentcontent != null">
+        CommentContent,
+      </if>
+      <if test="commenttime != null">
+        CommentTime,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="procinstid != null">
+        #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="taskid != null">
+        #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentuserid != null">
+        #{commentuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentusername != null">
+        #{commentusername,jdbcType=VARCHAR},
+      </if>
+      <if test="contenttype != null">
+        #{contenttype,jdbcType=INTEGER},
+      </if>
+      <if test="commentto != null">
+        #{commentto,jdbcType=VARCHAR},
+      </if>
+      <if test="commentcontent != null">
+        #{commentcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null">
+        #{commenttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_ru_comment">
+    update mc_ru_comment
+    <set>
+      <if test="procinstid != null">
+        ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="taskid != null">
+        TaskId = #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentuserid != null">
+        CommentUserId = #{commentuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentusername != null">
+        CommentUserName = #{commentusername,jdbcType=VARCHAR},
+      </if>
+      <if test="contenttype != null">
+        ContentType = #{contenttype,jdbcType=INTEGER},
+      </if>
+      <if test="commentto != null">
+        CommentTo = #{commentto,jdbcType=VARCHAR},
+      </if>
+      <if test="commentcontent != null">
+        CommentContent = #{commentcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null">
+        CommentTime = #{commenttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_ru_comment">
+    update mc_ru_comment
+    set ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      TaskId = #{taskid,jdbcType=VARCHAR},
+      CommentUserId = #{commentuserid,jdbcType=VARCHAR},
+      CommentUserName = #{commentusername,jdbcType=VARCHAR},
+      ContentType = #{contenttype,jdbcType=INTEGER},
+      CommentTo = #{commentto,jdbcType=VARCHAR},
+      CommentContent = #{commentcontent,jdbcType=VARCHAR},
+      CommentTime = #{commenttime,jdbcType=TIMESTAMP},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

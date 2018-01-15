@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.dao.mc_ru_notice_contentMapper">
+  <resultMap id="BaseResultMap" type="com.will.pojo.mc_ru_notice_content">
+    <constructor>
+      <idArg column="Id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ProcInstId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SendUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="SendUserName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NoticeUserId" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NoticeUserName" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="NoticeType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="Summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NoticeContent" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ContentType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ImportantFlag" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NoticeStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ReadTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="ReadPlatformType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="RecordStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CreateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LastModifyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, ProcInstId, SendUserId, SendUserName, NoticeUserId, NoticeUserName, NoticeType, 
+    Title, Summary, NoticeContent, ContentType, ImportantFlag, NoticeStatus, ReadTime, 
+    ReadPlatformType, RecordStatus, CreateTime, LastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mc_ru_notice_content
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mc_ru_notice_content
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.will.pojo.mc_ru_notice_content">
+    insert into mc_ru_notice_content (Id, ProcInstId, SendUserId, 
+      SendUserName, NoticeUserId, NoticeUserName, 
+      NoticeType, Title, Summary, 
+      NoticeContent, ContentType, ImportantFlag, 
+      NoticeStatus, ReadTime, ReadPlatformType, 
+      RecordStatus, CreateTime, LastModifyTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{procinstid,jdbcType=VARCHAR}, #{senduserid,jdbcType=VARCHAR}, 
+      #{sendusername,jdbcType=VARCHAR}, #{noticeuserid,jdbcType=VARCHAR}, #{noticeusername,jdbcType=CHAR}, 
+      #{noticetype,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, 
+      #{noticecontent,jdbcType=VARCHAR}, #{contenttype,jdbcType=VARCHAR}, #{importantflag,jdbcType=VARCHAR}, 
+      #{noticestatus,jdbcType=INTEGER}, #{readtime,jdbcType=TIMESTAMP}, #{readplatformtype,jdbcType=INTEGER}, 
+      #{recordstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{lastmodifytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.will.pojo.mc_ru_notice_content">
+    insert into mc_ru_notice_content
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="procinstid != null">
+        ProcInstId,
+      </if>
+      <if test="senduserid != null">
+        SendUserId,
+      </if>
+      <if test="sendusername != null">
+        SendUserName,
+      </if>
+      <if test="noticeuserid != null">
+        NoticeUserId,
+      </if>
+      <if test="noticeusername != null">
+        NoticeUserName,
+      </if>
+      <if test="noticetype != null">
+        NoticeType,
+      </if>
+      <if test="title != null">
+        Title,
+      </if>
+      <if test="summary != null">
+        Summary,
+      </if>
+      <if test="noticecontent != null">
+        NoticeContent,
+      </if>
+      <if test="contenttype != null">
+        ContentType,
+      </if>
+      <if test="importantflag != null">
+        ImportantFlag,
+      </if>
+      <if test="noticestatus != null">
+        NoticeStatus,
+      </if>
+      <if test="readtime != null">
+        ReadTime,
+      </if>
+      <if test="readplatformtype != null">
+        ReadPlatformType,
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="procinstid != null">
+        #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="senduserid != null">
+        #{senduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="sendusername != null">
+        #{sendusername,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeuserid != null">
+        #{noticeuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeusername != null">
+        #{noticeusername,jdbcType=CHAR},
+      </if>
+      <if test="noticetype != null">
+        #{noticetype,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="noticecontent != null">
+        #{noticecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="contenttype != null">
+        #{contenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="importantflag != null">
+        #{importantflag,jdbcType=VARCHAR},
+      </if>
+      <if test="noticestatus != null">
+        #{noticestatus,jdbcType=INTEGER},
+      </if>
+      <if test="readtime != null">
+        #{readtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readplatformtype != null">
+        #{readplatformtype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.will.pojo.mc_ru_notice_content">
+    update mc_ru_notice_content
+    <set>
+      <if test="procinstid != null">
+        ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="senduserid != null">
+        SendUserId = #{senduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="sendusername != null">
+        SendUserName = #{sendusername,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeuserid != null">
+        NoticeUserId = #{noticeuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeusername != null">
+        NoticeUserName = #{noticeusername,jdbcType=CHAR},
+      </if>
+      <if test="noticetype != null">
+        NoticeType = #{noticetype,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        Summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="noticecontent != null">
+        NoticeContent = #{noticecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="contenttype != null">
+        ContentType = #{contenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="importantflag != null">
+        ImportantFlag = #{importantflag,jdbcType=VARCHAR},
+      </if>
+      <if test="noticestatus != null">
+        NoticeStatus = #{noticestatus,jdbcType=INTEGER},
+      </if>
+      <if test="readtime != null">
+        ReadTime = #{readtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readplatformtype != null">
+        ReadPlatformType = #{readplatformtype,jdbcType=INTEGER},
+      </if>
+      <if test="recordstatus != null">
+        RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifytime != null">
+        LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.will.pojo.mc_ru_notice_content">
+    update mc_ru_notice_content
+    set ProcInstId = #{procinstid,jdbcType=VARCHAR},
+      SendUserId = #{senduserid,jdbcType=VARCHAR},
+      SendUserName = #{sendusername,jdbcType=VARCHAR},
+      NoticeUserId = #{noticeuserid,jdbcType=VARCHAR},
+      NoticeUserName = #{noticeusername,jdbcType=CHAR},
+      NoticeType = #{noticetype,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      Summary = #{summary,jdbcType=VARCHAR},
+      NoticeContent = #{noticecontent,jdbcType=VARCHAR},
+      ContentType = #{contenttype,jdbcType=VARCHAR},
+      ImportantFlag = #{importantflag,jdbcType=VARCHAR},
+      NoticeStatus = #{noticestatus,jdbcType=INTEGER},
+      ReadTime = #{readtime,jdbcType=TIMESTAMP},
+      ReadPlatformType = #{readplatformtype,jdbcType=INTEGER},
+      RecordStatus = #{recordstatus,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastModifyTime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
